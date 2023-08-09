@@ -14,9 +14,14 @@ const executeQuery = async (query) => {
 
 const postData = (data, table) => {
     executeQuery(async (client) => {
-        const database = client.db(table);
-        const collection = database.collection(table + 's')
-        await collection.insertOne(data);
+        try{
+            const database = client.db(table)
+            const collection = database.collection(table + 's')
+            await collection.insertOne(data)
+        }
+        catch(err){
+            console.log(err)
+        }
     })
 }
 

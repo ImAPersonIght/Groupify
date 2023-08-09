@@ -11,6 +11,7 @@ const post = (req, res)=>{
     const data = req.body
     try{
         dal.Post(data, table)
+        res.sendStatus(200)
     }
     catch(err){
         console.log(err)
