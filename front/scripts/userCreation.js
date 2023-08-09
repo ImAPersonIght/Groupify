@@ -1,16 +1,9 @@
+const url = "http://localhost:2178/user"
 // Make sure to change the data to grab it from user creation 
 let firstName = "Blake"
 let lastName = "Hathcock"
 let userName = "CoolGuy21"
 let passWord = "Password123!"
-
-
-let userData = {
-    fName : null,
-    lName : null,
-    useername : null,
-    password : null
-}
 
 
 //Validate user data
@@ -57,12 +50,32 @@ const validateUserData = (fName, lName, user, pass) => {
     }
 
     if(userValidated){
-        let userJSON = JSON.stringify(userData);
-        return userJSON
+        addUser(fName, lName, user, pass)
     }
 
 }
 
+const addUser = (fName, lNamem, user, pass)=>{
+    let userData = {
+        fName : fName,
+        lName : lNamem,
+        useername : user,
+        password : pass,
+        account_token : null
+    }
 
-
-
+    fetch(url, {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(userData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data); // Handle the response data
+    })
+    .catch(error => {
+        console.error('Error:', error); // Handle errors
+    });
+}
