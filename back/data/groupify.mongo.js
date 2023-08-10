@@ -12,16 +12,12 @@ const executeQuery = async (query) => {
     }
 };
 
-const postData = (data, table) => {
+const postData = (data, table, callback) => {
     executeQuery(async (client) => {
-        try{
-            const database = client.db(table)
-            const collection = database.collection(table + 's')
-            await collection.insertOne(data)
-        }
-        catch(err){
-            console.log(err)
-        }
+        const database = client.db(table)
+        const collection = database.collection(table + 's')
+        await collection.insertOne(data)
+        callback()
     })
 }
 
