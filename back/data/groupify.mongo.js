@@ -31,7 +31,23 @@ const getUserByIdentifier = async (callback, identifier, identifierData, table)=
     })
 }
 
+const updateUser = (callback, table, userToken, change, changeData)=>{
+    executeQuery(async (client)=>{
+        const database = client.db(table)
+        const collection = database.collection(table + 's')
+        const query = {account_token:userToken}
+        const update = {
+            $set:{
+                change:changeData
+            }
+        }
+        await collection.findOneAndUpdate(query, update)
+        callback()
+    })
+}
+
 module.exports = {
     GetUserByIdentifier:getUserByIdentifier,
-    Post: postData
+    Post: postData,
+    Update: updateUser
 }

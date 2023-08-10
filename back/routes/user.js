@@ -23,7 +23,7 @@ const getUserByToken = (req, res) => {
     getUserByIdentifier('token', res, req);
 }
 
-const getUserByUsername = (req, res)=>{
+const getUserByUsername = (req, res)=>{ //this is bugged
     getUserByIdentifier('username', res, req)
 }
 
