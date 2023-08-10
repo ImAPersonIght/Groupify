@@ -3,21 +3,45 @@ const router = express.Router()
 const dal = require('../data/groupify.mongo.js') 
 const table = 'user'
 
-const get = (req, res)=>{
-    res.send("This is the user section")
+function getUserByIdentifier(identifier, res, req) {
+    const userIdentifier = req.params[identifier]
+    console.log(userIdentifier)
+    try {
+        dal.GetUserByIdentifier((jsonData) => {
+            if (jsonData) {
+                res.json(jsonData)
+            } else {
+                res.sendStatus(404)
+            }
+        }, identifier, userIdentifier, table);
+    } catch (err) {
+        res.sendStatus(500);
+    }
+}
+
+const getUserByToken = (req, res) => {
+    getUserByIdentifier('token', res, req);
+}
+
+const getUserByUsername = (req, res)=>{ //this is bugged
+    getUserByIdentifier('username', res, req)
 }
 
 const post = (req, res)=>{
     const data = req.body
     try{
-        dal.Post(data, table)
+        dal.Post(data, table, () => {
+            res.sendStatus(201)
+        })
     }
     catch(err){
         console.log(err)
-        res.sendStatus(500).json({error: err})
+        res.sendStatus(500)
     }
 }
 
-router.get('/', get)
+router.get('/username/:username', getUserByUsername)
+router.get('/token/:account_token', getUserByToken)
 router.post('/', post)
+router.use(express.json())
 module.exports = router
