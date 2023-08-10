@@ -57,9 +57,9 @@ const validateUserData = (fName, lName, user, pass) => {
 
 const addUser = (fName, lNamem, user, pass)=>{
     let userData = {
-        fName : fName,
-        lName : lNamem,
-        useername : user,
+        f_name : fName,
+        l_ame : lNamem,
+        username : user,
         password : pass,
         account_token : null
     }
@@ -73,9 +73,9 @@ const addUser = (fName, lNamem, user, pass)=>{
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data); // Handle the response data
+        console.log(data)
     })
     .catch(error => {
-        console.error('Error:', error); // Handle errors
+        console.error('Error:', error)
     });
 }
