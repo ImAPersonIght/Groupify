@@ -6,7 +6,7 @@ const table = 'message'
 const post = (req, res)=>{
     const data = req.body
     try{
-        dal.Post(data, table, ()=>{
+        dal.PostUser(data, table, ()=>{
             res.sendStatus(201)
         })
     }
