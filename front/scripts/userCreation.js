@@ -10,7 +10,7 @@ document.getElementById("create-form").addEventListener("submit", function(event
     let user = document.getElementById("create-username").value;
     let pass = document.getElementById("create-password").value;
     let email = document.getElementById("create-email").value;
-    
+
     validateUserData(fName, lName, user, pass, email);
 });
 
@@ -26,7 +26,7 @@ const validateUserData = (fName, lName, user, pass, email) => {
     */
     const nameReg = /^[A-Z]{1}\w*$/
     const userNameReg = /^[^\s]{3,}$/
-    const passwordReg = /^(?:(?=.\d+)(?=.([A-Z]+))[^\s]{8,})$/
+    const passwordReg = /^(?=.*\d)(?=.*[A-Z])\S{8,}$/
     const emailReg = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]{2,})\.([a-zA-Z]{2,5})$/
 
 
