@@ -59,10 +59,10 @@ const validateUserData = (fName, lName, user, pass, email) => {
 
 }
 
-const addUser = (fName, lNamem, user, pass, email)=>{
+const addUser = (fName, lName, user, pass, email)=>{
     let userData = {
         f_name : fName,
-        l_ame : lNamem,
+        l_name : lName,
         username : user,
         password : pass,
         email : email,
