@@ -4,7 +4,7 @@ const dal = require('../data/groupify.mongo.js')
 const table = 'user'
 
 function getUserByIdentifier(identifier, res, req) {
-    const userIdentifier = req.params[identifier]
+    const userIdentifier = req.params.identifier
     console.log(userIdentifier)
     try {
         dal.GetUserByIdentifier((jsonData) => {
@@ -23,8 +23,8 @@ const getUserByToken = (req, res) => {
     getUserByIdentifier('token', res, req);
 }
 
-const getUserByUsername = (req, res)=>{ //this is bugged
-    getUserByIdentifier('username', res, req)
+const getUserByEmail = (req, res)=>{
+    getUserByIdentifier('email', res, req)
 }
 
 const post = (req, res)=>{
@@ -52,7 +52,7 @@ const patch = (req, res)=>{
     }
 }
 
-router.get('/username/:username', getUserByUsername)
+router.get('/email/:email', getUserByEmail)
 router.get('/token/:account_token', getUserByToken)
 router.post('/', post)
 router.patch('/', patch)

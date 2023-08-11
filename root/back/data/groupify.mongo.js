@@ -29,7 +29,7 @@ const postUser = (data, table, callback)=>{
 
 //gets a user by an identerfier 
 //@param identifer - the ideftifier for what    
-const getUserByIdentifier = async (identifier, identifierData, table, callback)=>{
+const getUserByIdentifier = async ( callback, identifier, identifierData, table)=>{
     executeQuery(async (client)=>{
         const database = client.db(table)
         const collection = database.collection(table + 's')
