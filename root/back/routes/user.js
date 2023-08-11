@@ -31,7 +31,7 @@ const post = (req, res)=>{
     const data = req.body
     try{
         dal.PostUser(data, table, () => {
-            res.sendStatus(201).send("User Poster Succsessfully")
+            res.sendStatus(201)
         })
     }
     catch(err){

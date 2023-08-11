@@ -1,4 +1,4 @@
-const url = "http://localhost:2178/user"
+const url = "http://localhost:2718/user"
 // Make sure to change the data to grab it from user creation 
 
 document.getElementById("create-form").addEventListener("submit", function(event) {
@@ -60,33 +60,24 @@ const validateUserData = (fName, lName, user, pass, email) => {
 }
 
 const addUser = (fName, lName, user, pass, email)=>{
-    let userData = {
-        f_name : fName,
-        l_name : lName,
-        username : user,
-        password : pass,
-        email : email,
-        account_token : 3
+    let data = {
+        "f_name" : fName,
+        "l_name" : lName,
+        "username" : user,
+        "password" : pass,
+        "email" : email,
+        "account_token" : 3
     }
 
     fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(userData)
+    method: 'POST',
+    headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok')
-        }
-        return response.json() 
-    })
-    .then(data => {
-        console.log('Status Code:', data.status)
-        console.log('Response Data:', data)
-    })
-    .catch(error => {
-        console.error('Fetch Error:', error)
-    });
+    .then(res => res.json())
+    .then(res => console.log(res))
+    .catch(error => console.error('Error:', error))
 }
