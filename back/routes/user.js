@@ -30,8 +30,20 @@ const getUserByUsername = (req, res)=>{ //this is bugged
 const post = (req, res)=>{
     const data = req.body
     try{
-        dal.Post(data, table, () => {
+        dal.PostUser(data, table, () => {
             res.sendStatus(201)
+        })
+    }
+    catch(err){
+        console.log(err)
+        res.sendStatus(500)
+    }
+}
+
+const patch = (req, res)=>{
+    try{
+        dal.PatchUser(()=>{
+
         })
     }
     catch(err){
@@ -43,5 +55,6 @@ const post = (req, res)=>{
 router.get('/username/:username', getUserByUsername)
 router.get('/token/:account_token', getUserByToken)
 router.post('/', post)
+router.patch('/', post)
 router.use(express.json())
 module.exports = router
