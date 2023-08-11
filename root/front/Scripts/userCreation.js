@@ -83,7 +83,7 @@ const addUser = (fName, lName, user, pass, email)=>{
         return response.json() 
     })
     .then(data => {
-        console.log('Status Code:', response.status) 
+        console.log('Status Code:', data.status)
         console.log('Response Data:', data)
     })
     .catch(error => {

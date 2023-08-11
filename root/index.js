@@ -11,8 +11,8 @@
 
     app.use(express.static('./front'))
 
-    app.get('/', (req, res) => {
-        res.sendFile(path.join(__dirname, 'front', 'createUser.html'));
+    app.get('/home', (req, res) => {
+        res.sendFile(path.resolve(".\\front\\createUser.html"))
     })
 
     app.get('/', (req, res)=>{
@@ -27,4 +27,8 @@
 
     app.listen(backendPort, ()=>{
         console.log('API service listening at localhost:2718')
+    })
+
+    app.listen(frontendPort, ()=>{
+        
     })

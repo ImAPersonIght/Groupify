@@ -1,4 +1,4 @@
-const url = "http://localhost:2178"
+
 
 document.getElementById('login-button').addEventListener('click', function(event) {
     event.preventDefault(); 
@@ -6,7 +6,7 @@ document.getElementById('login-button').addEventListener('click', function(event
     const username = document.getElementById('login-email').value;
   
     // Make a GET request to fetch user data by username
-    fetch(`${url}/username/${username}`)
+    fetch(`/username/${username}`)
       .then(response => response.json())
       .then(user => {
         const passwordInput = document.getElementById('login-password').value;
