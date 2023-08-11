@@ -77,7 +77,7 @@ const addUser = (fName, lName, user, pass, email)=>{
     },
     body: JSON.stringify(data)
     })
-    .then(res => res.json())
+    .then(res => res.status)
     .then(res => console.log(res))
     .catch(error => console.error('Error:', error))
 }

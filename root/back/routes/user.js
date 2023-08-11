@@ -55,6 +55,6 @@ const patch = (req, res)=>{
 router.get('/username/:username', getUserByUsername)
 router.get('/token/:account_token', getUserByToken)
 router.post('/', post)
-router.patch('/', post)
+router.patch('/', patch)
 router.use(express.json())
 module.exports = router
