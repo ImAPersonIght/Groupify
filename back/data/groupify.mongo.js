@@ -1,6 +1,8 @@
 const {MongoClient} = require('mongodb')
 const url = "mongodb://localhost:2717"
 
+//opens a client and executes query on data
+//@param query - Database query instructions
 const executeQuery = async (query)=>{
     const client = new MongoClient(url)
     try {
@@ -12,6 +14,10 @@ const executeQuery = async (query)=>{
     }
 }
 
+//post a user to the database
+//@param data - the data that will get posted
+//@param table - the table that the data will be posted to
+//@param callback - callback code that will be ran after the data is posted
 const postUser = (data, table, callback)=>{
     executeQuery(async (client) => {
         const database = client.db(table)
@@ -21,7 +27,9 @@ const postUser = (data, table, callback)=>{
     })
 }
 
-const getUserByIdentifier = async (callback, identifier, identifierData, table)=>{
+//gets a user by an identerfier 
+//@param identifer - the ideftifier for what    
+const getUserByIdentifier = async (identifier, identifierData, table, callback)=>{
     executeQuery(async (client)=>{
         const database = client.db(table)
         const collection = database.collection(table + 's')
