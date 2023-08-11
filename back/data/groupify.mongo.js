@@ -12,7 +12,7 @@ const executeQuery = async (query)=>{
     }
 }
 
-const postData = (data, table, callback)=>{
+const postUser = (data, table, callback)=>{
     executeQuery(async (client) => {
         const database = client.db(table)
         const collection = database.collection(table + 's')
@@ -48,6 +48,6 @@ const updateUser = (callback, table, userToken, change, changeData)=>{
 
 module.exports = {
     GetUserByIdentifier:getUserByIdentifier,
-    Post: postData,
+    PostUser: postUser,
     Update: updateUser
 }
