@@ -66,7 +66,7 @@ const addUser = (fName, lNamem, user, pass, email)=>{
         username : user,
         password : pass,
         email : email,
-        account_token : null
+        account_token : 3
     }
 
     fetch(url, {
