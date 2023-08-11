@@ -72,15 +72,21 @@ const addUser = (fName, lName, user, pass, email)=>{
     fetch(url, {
         method: 'POST',
         headers: {
-        'Content-Type': 'application/json'
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify(userData)
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok')
+        }
+        return response.json() 
+    })
     .then(data => {
-        console.log(data)
+        console.log('Status Code:', response.status) 
+        console.log('Response Data:', data)
     })
     .catch(error => {
-        console.error('Error:', error)
+        console.error('Fetch Error:', error)
     });
 }
