@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Create</title>
+        <title>Home</title>
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -9,26 +9,71 @@
         <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
         <link href="../front/Css/messages.css" rel="stylesheet">
+
+        <script src="/Groupify/root/front/Scripts/Messages.js" defer></script>
     </head>
     <body id="body">
         <section>
-            <div>
-                <div class="row justify-content-center">
+            
+            <div class="container-fluid">
+                <div id="column-container" class="row justify-content-center m-0">
                     <div id="column-one" class="col-4" >
-                        baddddd
+                        <div id="user-container">
+                            <div>
+                                user image
+                            </div>
+                            <div>
+                                <div class="btn-group" role="group">
+                                    <button id="user-button" type="button" class="btn btn-secondary">S</button>
+                                </div>
+                                <div class="btn-group" role="group">
+                                    <button id="user-button" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#groupModal">+</button>
+                                </div>
+                                
+                                <!-- Modal -->
+                                <div class="modal fade" id="groupModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                        ...
+                                        </div>
+                                        <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="friends-container">
+                            
+                        </div>
                     </div>
                     <div id="column-two" class="col-4">
                         <div class="row justify-content-center">
                             <div id="column-four" class="col-4">
-                                hiii bads
+                                four
                             </div>
                             <div id="column-five" class="col-4">
-                                hellooo
+                                <div id="messages-container">
+
+                                </div>
+                                <div id="message-button-container" class="input-group">
+                                    <input id="message-input" type="text" class="form-control" placeholder="Enter a message" aria-label="A Message" aria-describedby="basic-addon2">
+                                    <div class="input-group-append">
+                                      <button id="message-button" class="btn btn-outline-secondary" type="button">Enter</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div id="column-three" class="col-4">
-                        more bads
+                        three
                     </div>
                 </div>
             </div>
@@ -41,5 +86,6 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
+        
     </body>
 </html>
