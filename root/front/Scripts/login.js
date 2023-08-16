@@ -2,7 +2,7 @@
 
     console.log("this is connected")
 
-    document.getElementById('login-button').addEventListener('click', function(event) {
+    document.getElementById('login-button').addEventListener('submit', function(event) {
         console.log("button clicked")
         event.preventDefault()
         const email = document.getElementById('login-email').value
