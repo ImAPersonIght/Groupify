@@ -1,0 +1,40 @@
+/* GLOBAL */
+#body{
+    background-color: #483a5e;
+}
+section{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* column */
+#column-one{
+    background-color: #8c5c86;
+    margin: 10px;
+    height: 800px;
+    width: 27%;
+}
+#column-two{
+    margin: 10px;
+    width: 40%;
+}
+#column-three{
+    background-color: #8c5c86;
+    margin: 10px;
+    width: 27%;
+}
+#column-four{
+    background-color: #8c5c86;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    height: 150px;
+    width: 100%;
+}
+#column-five{
+    background-color: #8c5c86;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 600px;
+    width: 100%;
+}
