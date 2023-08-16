@@ -21,13 +21,11 @@ const getTime = () => {
     return mTime
 }
 
-const validateMessage = (message, user) => {
-    getTimeAndDate()
-
+const validateMessage = (message, acToken) => {
     messGex = /^(.){1,300}$/
 
     if(messGex.test(message)){
-        postMessage()
+        postMessage(message, acToken)
     } else {
         console.log("Message lenght is over 300")
     }
