@@ -15,6 +15,10 @@ app.get('/createuser', (req, res) => {
     res.sendFile(path.resolve(".\\front\\createUser.html"))
 })
 
+app.get('/home', (req, res)=>{
+    res.sendFile(path.resolve(".\\front\\messages.html"))
+})
+
 app.get('/', (req, res)=>{
     res.send('This is the Groupify api')
 })  
