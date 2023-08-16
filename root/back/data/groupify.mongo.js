@@ -30,10 +30,11 @@ const postUser = (data, table, callback)=>{
 //gets a user by an identerfier 
 //@param identifer - the ideftifier for what    
 const getUserByIdentifier = async ( callback, identifier, identifierData, table)=>{
+    console.log(identifier, identifierData, table)
     executeQuery(async (client)=>{
         const database = client.db(table)
         const collection = database.collection(table + 's')
-        const query = {identifier: identifierData}
+        const query = {[identifier]: identifierData}
         let data = await collection.findOne(query)
         callback(data)
     })
