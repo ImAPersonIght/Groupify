@@ -22,7 +22,6 @@ const getUserByToken = (req, res) => {
 
 const getUserByEmail = (req, res)=>{
     const email = req.params.email
-    console.log(email)
     try {
         dal.GetUserByIdentifier((jsonData) => {
             if (jsonData) {
@@ -32,7 +31,6 @@ const getUserByEmail = (req, res)=>{
             }
         }, "email", email, table)
     } catch (err) {
-        console.log(err)
         res.sendStatus(500)
     }
 }

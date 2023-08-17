@@ -1,3 +1,4 @@
+const e = require('express')
 const {MongoClient} = require('mongodb')
 const url = "mongodb://localhost:2717"
 
@@ -30,13 +31,23 @@ const postUser = (data, table, callback)=>{
 //gets a user by an identerfier 
 //@param identifer - the ideftifier for what    
 const getUserByIdentifier = async ( callback, identifier, identifierData, table)=>{
-    console.log(identifier, identifierData, table)
     executeQuery(async (client)=>{
         const database = client.db(table)
         const collection = database.collection(table + 's')
         const query = {[identifier]: identifierData}
         let data = await collection.findOne(query)
         callback(data)
+    })
+}
+
+
+const getMessageByRoomid = async (callback, table, id)=>{
+    executeQuery(async (client)=>{
+        const database = client.db(table)
+        const collection = database.collection(table + "s")
+        const query = {roomid: parseInt(id)}
+        const messages = await collection.find(query).toArray()
+        callback(messages)
     })
 }
 
@@ -57,6 +68,7 @@ const updateUser = (callback, table, userToken, change, changeData)=>{
 
 module.exports = {
     GetUserByIdentifier:getUserByIdentifier,
+    getMessageByRoomid:getMessageByRoomid,
     PostUser: postUser,
     Update: updateUser
 }
