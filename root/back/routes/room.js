@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const dal = require('../data/groupify.mongo.js') 
 const { put } = require('./user.js')
-const table = 'message'
+const table = 'room' 
 
 const post = (req, res)=>{
     const data = req.body
@@ -17,12 +17,12 @@ const post = (req, res)=>{
     }
 }
 
-const getMessageByRoomid = (req, res)=>{
-    const roomid = req.params.roomid
+const getRoomById = (req, res)=>{
+    const id = req.params.id
     try{
-        dal.GetMessageByRoomid((data)=>{
-            res.json(data)
-        }, table, roomid)
+        dal.GetRoomByRoomid((room)=>{
+            res.json(room)
+        }, table, id)
     }
     catch(err){
         console.log(err)
@@ -31,6 +31,6 @@ const getMessageByRoomid = (req, res)=>{
 }
 
 router.post('/', post)
-router.get('/:roomid', getMessageByRoomid)
+router.get('/:id', getRoomById)
 router.use(express.json())
 module.exports = router

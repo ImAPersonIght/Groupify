@@ -38,7 +38,7 @@ const getUserByEmail = (req, res)=>{
 const post = (req, res)=>{
     const data = req.body
     try{
-        dal.PostUser(data, table, () => {
+        dal.Post(data, table, () => {
             res.sendStatus(201)
         })
     }
