@@ -7,11 +7,83 @@ section{
     max-height: 100%;
 }
 
+
+
+/* user box */
+
+#user-container{
+    border: 3px solid #483a5e;
+    height: 10%;
+    margin: 10px;
+}
+
+#user-button{
+    background-color: #FFF;
+    color: black;
+    border: 3px solid  #483a5e;
+}
+
+/* create group modal */
+
+#modal-close-btn{
+    background-color: #FFF;
+    color: black;
+    border: 3px solid  #483a5e;
+}
+
+#modal-create-group-btn{
+    background-color: #FFF;
+    color: black;
+    border: 3px solid  #483a5e;
+}
+
+#modal-whole{
+    border: 5px solid #483a5e;
+    border-radius: 2%;
+}
+#modal-header{
+    border-bottom: 5px solid #483a5e;
+}
+#modal-footer{
+    border-top: 5px solid #483a5e;
+}
+
+/* groups box */
+
+#groups-container{
+    border: 3px solid #483a5e;
+    height: 85%;
+    margin: 10px;
+}
+
+/* messages box */
+
+#messages-container{
+    border: #483a5e solid 3px;
+    border-radius: 5%;
+    height: 80%;
+    margin: 20px 10px 10px 10px;
+}
+
+#message-button-container{
+    padding: 10px 20px 10px 20px;
+}
+
+#message-button{
+    background-color: #FFF;
+    border: 3px solid #483a5e;
+}
+#message-input{
+    border: 3px solid #483a5e;
+}
+
+
+
+
 /* column */
 #column-one{
     background-color: #8c5c86;
-    margin: 10px;
-    height: 800px;
+    margin: 20px 10px 10px 10px;
     width: 27%;
 }
 #column-two{
@@ -20,21 +92,24 @@ section{
 }
 #column-three{
     background-color: #8c5c86;
-    margin: 10px;
+    margin: 20px 10px 10px 10px;
     width: 27%;
 }
 #column-four{
     background-color: #8c5c86;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-bottom: 20px;
-    height: 150px;
+    margin: 10px 10px 20px 10px;
     width: 100%;
+    height: 150px;
 }
 #column-five{
     background-color: #8c5c86;
     margin-left: 10px;
     margin-right: 10px;
-    height: 600px;
     width: 100%;
+    height: 700px;
+}
+
+#column-container{
+    margin-top: 40px;
+    margin-bottom: 10px;
 }

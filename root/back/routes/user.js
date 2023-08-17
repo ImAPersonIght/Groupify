@@ -3,9 +3,9 @@ const router = express.Router()
 const dal = require('../data/groupify.mongo.js') 
 const table = 'user'
 
-function getUserByIdentifier(identifier, res, req) {
-    const userIdentifier = req.params.identifier
-    console.log(userIdentifier)
+const getUserByToken = (req, res) => {
+    const token = req.params.account_token
+    console.log(token)
     try {
         dal.GetUserByIdentifier((jsonData) => {
             if (jsonData) {
@@ -13,18 +13,26 @@ function getUserByIdentifier(identifier, res, req) {
             } else {
                 res.sendStatus(404)
             }
-        }, identifier, userIdentifier, table);
+        }, "account_token", parseInt(token), table)
     } catch (err) {
-        res.sendStatus(500);
+        console.log(err)
+        res.sendStatus(500)
     }
 }
 
-const getUserByToken = (req, res) => {
-    getUserByIdentifier('token', res, req);
-}
-
 const getUserByEmail = (req, res)=>{
-    getUserByIdentifier('email', res, req)
+    const email = req.params.email
+    try {
+        dal.GetUserByIdentifier((jsonData) => {
+            if (jsonData) {
+                res.json(jsonData)
+            } else {
+                res.sendStatus(404)
+            }
+        }, "email", email, table)
+    } catch (err) {
+        res.sendStatus(500)
+    }
 }
 
 const post = (req, res)=>{
