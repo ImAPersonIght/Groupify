@@ -30,7 +30,7 @@ const messageRoute = require("./back/routes/message.js")
 app.use('/message', messageRoute)
 
 const roomRoute = require("./back/routes/room.js")
-app.user('/room', roomRoute)
+app.use('/room', roomRoute)
 
 app.listen(backendPort, ()=>{
     console.log('API service listening at localhost:2718')

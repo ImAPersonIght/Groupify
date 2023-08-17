@@ -19,7 +19,7 @@ const executeQuery = async (query)=>{
 //@param data - the data that will get posted
 //@param table - the table that the data will be posted to
 //@param callback - callback code that will be ran after the data is posted
-const postUser = (data, table, callback)=>{
+const postData = (data, table, callback)=>{
     executeQuery(async (client) => {
         const database = client.db(table)
         const collection = database.collection(table + 's')
@@ -51,6 +51,16 @@ const getMessageByRoomid = async (callback, table, id)=>{
     })
 }
 
+const getRoomById = async (callback, table, id)=>{
+    executeQuery(async (client)=>{
+        const database = client.db(table)
+        const collection = database.collection(table + "s")
+        const query = {roomid: parseInt(id)}
+        const room = await collection.findOne(query)
+        callback(room)
+    })
+}
+
 const updateUser = (callback, table, userToken, change, changeData)=>{
     executeQuery(async (client)=>{
         const database = client.db(table)
@@ -68,7 +78,8 @@ const updateUser = (callback, table, userToken, change, changeData)=>{
 
 module.exports = {
     GetUserByIdentifier:getUserByIdentifier,
-    getMessageByRoomid:getMessageByRoomid,
-    PostUser: postUser,
-    Update: updateUser
+    GetMessageByRoomid:getMessageByRoomid,
+    GetRoomByRoomid:getRoomById,
+    Post:postData,
+    Update:updateUser
 }

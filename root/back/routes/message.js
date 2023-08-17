@@ -7,7 +7,7 @@ const table = 'message'
 const post = (req, res)=>{
     const data = req.body
     try{
-        dal.PostUser(data, table, ()=>{
+        dal.Post(data, table, ()=>{
             res.sendStatus(201)
         })
     }
@@ -20,7 +20,7 @@ const post = (req, res)=>{
 const getMessageByRoomid = (req, res)=>{
     const roomid = req.params.roomid
     try{
-        dal.getMessageByRoomid((data)=>{
+        dal.GetMessageByRoomid((data)=>{
             res.json(data)
         }, table, roomid)
     }
