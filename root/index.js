@@ -1,4 +1,6 @@
+require('dotenv').config()
 const express = require('express')
+const jwt = require('jsonwebtoken')
 const app = express()
 const cors = require('cors');  
 const path = require('path')
@@ -17,6 +19,10 @@ app.get('/createuser', (req, res) => {
 
 app.get('/home', (req, res)=>{
     res.sendFile(path.resolve(".\\front\\messages.html"))
+})
+
+app.get('/profile', (req, res)=>{
+    res.sendFile(path.resolve(".\\front\\profile.html"))
 })
 
 app.get('/', (req, res)=>{
