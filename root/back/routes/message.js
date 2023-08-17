@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router()
 const dal = require('../data/groupify.mongo.js') 
-const { put } = require('./user.js')
 const table = 'message'
 
 const post = (req, res)=>{
