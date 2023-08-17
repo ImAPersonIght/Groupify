@@ -1,8 +1,4 @@
 // The user and message will have to come from elsewhere
-
-// const accessToken = localStorage.getItem('accessToken')
-// console.log(accessToken)
-
 const getUserData = async ()=>{
     const token = localStorage.getItem('accessToken')
     if (!token) {
@@ -15,13 +11,10 @@ const getUserData = async ()=>{
                 'Authorization': `Bearer ${token}`
             }
         })
-        userData.json().then(data=>{
-            return data
-        })
+        return userData.json()
     }
     return null
 }
-getUserData()
 
 const getDate = () => {
     let date = new Date()
@@ -54,15 +47,15 @@ const validateMessage = (message) => {
 }
 
 const postMessage = async (mess) => {
-    const accountToken = await getUserData();
+    const userData = await getUserData();
     const url = "http://localhost:2718/message"
     let messageData = {
         messageID : 1,
         mTime : getTime(),
         mDate : getDate(),
         mMessage : mess,
-        accountToken : accountToken[0],
-        posterUsername : getUserByToken(url, accountToken),
+        accountToken : userData.user,
+        posterUsername : getUserByToken(url, userData.user),
         roomID : 1 // Need to find a way to get roomID
     }
 
