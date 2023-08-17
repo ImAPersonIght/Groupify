@@ -1,7 +1,7 @@
 // The user and message will have to come from elsewhere
 
 
-const getTimeAndDate = () => {
+const getDate = () => {
     let date = new Date()
 
     mDate = date.getDate() + "/"
