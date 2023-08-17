@@ -9,7 +9,6 @@ document.getElementById('login-button').addEventListener('click', function(event
         fetch(`${url}/email/${email}`)
         .then(response => response.json())
         .then(data => {
-            console.log(data)
             const passwordInput = document.getElementById('login-password').value
             if (data.password === passwordInput) {
                 change_window()
