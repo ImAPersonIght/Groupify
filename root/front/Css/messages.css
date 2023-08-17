@@ -23,9 +23,34 @@ section{
     border: 3px solid  #483a5e;
 }
 
-/* friends box */
+/* create group modal */
 
-#friends-container{
+#modal-close-btn{
+    background-color: #FFF;
+    color: black;
+    border: 3px solid  #483a5e;
+}
+
+#modal-create-group-btn{
+    background-color: #FFF;
+    color: black;
+    border: 3px solid  #483a5e;
+}
+
+#modal-whole{
+    border: 5px solid #483a5e;
+    border-radius: 2%;
+}
+#modal-header{
+    border-bottom: 5px solid #483a5e;
+}
+#modal-footer{
+    border-top: 5px solid #483a5e;
+}
+
+/* groups box */
+
+#groups-container{
     border: 3px solid #483a5e;
     height: 85%;
     margin: 10px;
