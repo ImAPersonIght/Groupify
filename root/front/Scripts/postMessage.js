@@ -32,11 +32,15 @@ const validateMessage = (message, acToken) => {
 }
 
 const postMessage = ( mess, acToken) => {
+    const url = "http://localhost:2718/user"
     let messageData = {
+        messageID : 1,
         mTime : getTime(),
         mDate : getDate(),
         mMessage : mess,
-        accountToken : acToken
+        accountToken : acToken,
+        posterUsername : getUserByToken(url, acToken),
+        roomID : 1 // Need to find a way to get roomID
     }
 
     fetch(url, {
@@ -53,4 +57,19 @@ const postMessage = ( mess, acToken) => {
     .catch(error => {
         console.error('Error:', error); // Handle errors
     });
+}
+
+const getUserByToken = (url, acToken) => {
+    try{
+        fetch(`${url}/token/${acToken}`)
+            .then(response => response.json())
+            .then(data => {
+                return data.username
+            })
+            .catch(error => {
+                console.error('Error:', error)
+        })
+    } catch(err){
+        console.error(err)
+    }   
 }
