@@ -21,10 +21,6 @@ app.get('/home', (req, res)=>{
     res.sendFile(path.resolve(".\\front\\messages.html"));
 })
 
-app.post('/home/auth', authenticateToken, (req, res) => {
-    res.sendStatus(200)
-})
-
 app.get('/home/profile', (req, res)=>{
     res.sendFile(path.resolve(".\\front\\profile.html"))
 })
@@ -33,6 +29,14 @@ app.get('/', (req, res)=>{
     res.send('This is the Groupify api')
 })  
 
+app.post('/home/auth', authenticateToken, (req, res) => {
+    res.sendStatus(200)
+})
+
+app.post('/decode', authenticateToken, (req, res)=>{
+    res.json(req.user)
+})
+
 app.post('/login', (req, res)=>{
     const user_id = req.body.account_token
     const user = {user: user_id}
@@ -40,19 +44,13 @@ app.post('/login', (req, res)=>{
     res.json(accessToken)
 })
 
-// app.post('/token', authenticateToken, (req, res)=>{
-
-// })
-
 function authenticateToken(req, res, next) {
     const authHeader = req.headers['authorization']
-    console.log(authHeader)
     const token = authHeader && authHeader.split(' ')[1]
-    console.log(token)
     if (!token) {
         res.sendStatus(401)
     } else {
-        jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+        jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user, decode) => {
             if (err) {
                 res.sendStatus(403)
             } else {

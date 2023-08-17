@@ -16,13 +16,12 @@ document.getElementById('login-button').addEventListener('click', async function
                     const accessToken = await getAccessToken(data)
                     console.log(accessToken)
                     if (accessToken != null) {
-                        console.log(accessToken.value)
                         localStorage.setItem('accessToken', accessToken)
                     }
                     if (true) {
-                        change_window();
+                        change_window()
                     } else {
-                        console.log('error creating session token');
+                        console.log('error creating session token')
                     }
                 } catch (err) {
                     console.log(err)
@@ -39,24 +38,26 @@ document.getElementById('login-button').addEventListener('click', async function
 const change_window = async ()=>{
     try {
         const token = localStorage.getItem('accessToken')
-        console.log(token)
         if (!token) {
             console.error('Access token not found')
             return
         }
-        const response = await fetch('http://localhost:2718/home/auth', {
-            method:'POST',
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
-        })
-        if(response.ok){
-            window.location.href = '/home'
-        }
         else{
-            console.log("failed to authenticate access token")
+            const response = await fetch('http://localhost:2718/home/auth', {
+                method:'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            if(response.ok){
+                window.location.href = '/home'
+            }
+            else{
+                console.log("failed to authenticate access token")
+            }
         }
-    } catch (error) {
+    } 
+    catch (error) {
         console.error('Error fetching /home route:', error)
     }
 }
@@ -72,7 +73,6 @@ const getAccessToken = async (data)=>{
             body: JSON.stringify(data)
             })
         const accessToken = await response.json()
-        console.log(accessToken)
         return accessToken
     }
     catch(err){

@@ -1,6 +1,4 @@
 const url = "http://localhost:2718/user"
-// Make sure to change the data to grab it from user creation 
-
 document.getElementById("create-form").addEventListener("submit", function(event) {
     event.preventDefault(); 
 
@@ -14,9 +12,7 @@ document.getElementById("create-form").addEventListener("submit", function(event
     validateUserData(fName, lName, user, pass, email);
 });
 
-//Validate user data
-
-// This returns the useer as a JSON
+// This returns the user as a JSON
 const validateUserData = (fName, lName, user, pass, email) => {
     /*
     What the regex is checking for:
