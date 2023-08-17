@@ -39,6 +39,7 @@ section{
     width: 100%;
 }
 
+/* Friends */
 .input-group{
     margin: center;
     margin-top: 10px;
@@ -47,21 +48,64 @@ section{
     background-color: #483a5e;
 }
 
-.btn-outline-secondary:hover{
-    color: #fff;
+.btn-outline-secondary{
     background-color: #483a5e;
+    color: #FFF;
+    border: 3px solid  #483a5e;
 }
 
+.btn-outline-secondary:hover{
+    background-color: #483a5e;
+    color: #FFF;
+    border: 3px solid  #483a5e;
+}
+
+/* Profile Settings */
 .btn-link{
     color: #000000;
+    text-decoration: none;
 }
 
 .btn-link:hover{
     color: #000000;
 }
 
-#userNameModal{
-    color: #483a5e;
-    background-color: #8c5c86;
+/* modal */
+#modal-close-btn{
+    background-color: #FFF;
+    color: black;
+    border: 3px solid  #483a5e;
 }
 
+#modal-save-changes{
+    background-color: #483a5e;
+    color: #FFF;
+    border: 3px solid  #483a5e;
+}
+
+.modal-dialog{
+    border: 5px solid #483a5e;
+    border-radius: 2%;
+}
+
+.modal-header{
+    border-bottom: 2px solid #483a5e;
+}
+
+.modal-footer{
+    border-top: 2px solid #483a5e;
+}
+
+/* Profile */
+
+#user-image{
+    
+}
+
+#user-name{
+    margin-left: 50%;
+}
+
+#user-email{
+    margin-left: 50%;
+}
