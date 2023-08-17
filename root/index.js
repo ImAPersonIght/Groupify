@@ -13,12 +13,16 @@ app.use(cors({ origin: `http://localhost:${frontendPort}` }));
 
 app.use(express.static('./front'))
 
-app.get('/createuser', (req, res) => {
+app.get('/userportal', (req, res) => {
     res.sendFile(path.resolve(".\\front\\createUser.html"))
 })
 
 app.get('/home', (req, res)=>{
-    res.sendFile(path.resolve(".\\front\\messages.html"))
+    res.sendFile(path.resolve(".\\front\\messages.html"));
+})
+
+app.post('/home/auth', authenticateToken, (req, res) => {
+    res.sendStatus(200)
 })
 
 app.get('/home/profile', (req, res)=>{
@@ -29,6 +33,36 @@ app.get('/', (req, res)=>{
     res.send('This is the Groupify api')
 })  
 
+app.post('/login', (req, res)=>{
+    const user_id = req.body.account_token
+    const user = {user: user_id}
+    const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET)
+    res.json(accessToken)
+})
+
+// app.post('/token', authenticateToken, (req, res)=>{
+
+// })
+
+function authenticateToken(req, res, next) {
+    const authHeader = req.headers['authorization']
+    console.log(authHeader)
+    const token = authHeader && authHeader.split(' ')[1]
+    console.log(token)
+    if (!token) {
+        res.sendStatus(401)
+    } else {
+        jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+            if (err) {
+                res.sendStatus(403)
+            } else {
+                req.user = user
+                next()
+            }
+        })
+    }
+}
+
 const userRoute = require("./back/routes/user.js")  
 app.use('/user', userRoute)
 
@@ -37,6 +71,7 @@ app.use('/message', messageRoute)
 
 const roomRoute = require("./back/routes/room.js")
 app.use('/room', roomRoute)
+
 
 app.listen(backendPort, ()=>{
     console.log('API service listening at localhost:2718')

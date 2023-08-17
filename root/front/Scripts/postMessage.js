@@ -1,5 +1,6 @@
 // The user and message will have to come from elsewhere
 
+const accessToken = localStorage.getItem('accessToken')
 
 const getDate = () => {
     let date = new Date()
@@ -32,7 +33,7 @@ const validateMessage = (message, acToken) => {
 }
 
 const postMessage = ( mess, acToken) => {
-    const url = "http://localhost:2718/user"
+    const url = "http://localhost:2718/message"
     let messageData = {
         messageID : 1,
         mTime : getTime(),
@@ -52,10 +53,10 @@ const postMessage = ( mess, acToken) => {
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data); // Handle the response data
+        console.log(data)
     })
     .catch(error => {
-        console.error('Error:', error); // Handle errors
+        console.error('Error:', error)
     });
 }
 

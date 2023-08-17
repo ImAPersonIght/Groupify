@@ -5,9 +5,9 @@ document.getElementById('gotoLoginButton').addEventListener('click', function(ev
 
 const change_window = async ()=>{
     try {
-        const response = await fetch('http://localhost:2718/createuser')
+        const response = await fetch('http://localhost:2718/userportal')
         if (response.ok) {
-            window.location.href = '/createuser'
+            window.location.href = '/userportal'
         } else {
             console.error('Failed to fetch /home route')
         }
