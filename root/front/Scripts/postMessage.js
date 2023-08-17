@@ -1,5 +1,20 @@
 // The user and message will have to come from elsewhere
-
+const getUserData = async ()=>{
+    const token = localStorage.getItem('accessToken')
+    if (!token) {
+        console.error('Access token not found')
+    }
+    else{
+        const userData = await fetch('http://localhost:2718/decode', {
+            method:'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        return userData.json()
+    }
+    return null
+}
 
 const getDate = () => {
     let date = new Date()
@@ -21,25 +36,26 @@ const getTime = () => {
     return mTime
 }
 
-const validateMessage = (message, acToken) => {
-    messGex = /^(.){1,300}$/
+const validateMessage = (message) => {
+    const messGex = /^(.){1,300}$/
 
     if(messGex.test(message)){
-        postMessage(message, acToken)
+        postMessage(message)
     } else {
         console.log("Message lenght is over 300")
     }
 }
 
-const postMessage = ( mess, acToken) => {
-    const url = "http://localhost:2718/user"
+const postMessage = async (mess) => {
+    const userData = await getUserData();
+    const url = "http://localhost:2718/message"
     let messageData = {
         messageID : 1,
         mTime : getTime(),
         mDate : getDate(),
         mMessage : mess,
-        accountToken : acToken,
-        posterUsername : getUserByToken(url, acToken),
+        accountToken : userData.user,
+        posterUsername : getUserByToken(url, userData.user),
         roomID : 1 // Need to find a way to get roomID
     }
 
@@ -52,10 +68,10 @@ const postMessage = ( mess, acToken) => {
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data); // Handle the response data
+        console.log(data)
     })
     .catch(error => {
-        console.error('Error:', error); // Handle errors
+        console.error('Error:', error)
     });
 }
 
