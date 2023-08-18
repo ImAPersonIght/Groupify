@@ -99,11 +99,17 @@ section{
 /* Profile */
 
 #user-image{
-    
+    max-width: 70px;
+    max-height: 70px;
+    min-height: 50px;
+    min-height: 50px;
+    border: 3px solid #483a5e;
+    margin: 3px;
 }
 
 #user-name{
     margin-left: 50%;
+    
 }
 
 #user-email{
