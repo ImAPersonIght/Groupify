@@ -1,4 +1,5 @@
 document.getElementById('modal-create-group-btn').addEventListener('click', function(event) {
+    console.log("This button has been clicked")
     event.preventDefault()
 
     let name = document.getElementById('group-name').value
@@ -17,15 +18,25 @@ const createGroup = (name, topic, description, rules) => {
     }
 }
 
+const getCurrentDate = () => {
+    let date = new Date()
+
+    mDate = date.getDate() + "/"
+    + (date.getMonth()+1)  + "/" 
+    + date.getFullYear();
+
+    return mDate
+}
+
 const addGroup = (name, topic, description, rules) => {
-    const url = 'localhost:2718/room'
+    const url = 'http://localhost:2718/room'
     let data = {
         roomid : 1,
         roomname : name,
         topic : topic,
         description : description,
         rules : rules,
-        creation_date : getCurrentDate(),
+        creation_date : getDate(),
         admin : 1  //This will need to chnage later and actually make it so that it gets the current user account token
     }
 
