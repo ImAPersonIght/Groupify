@@ -16,7 +16,7 @@ const getUserData = async ()=>{
     return null
 }
 
-const getDate = () => {
+const getCurrentDate = () => {
     let date = new Date()
 
     mDate = date.getDate() + "/"
@@ -52,7 +52,7 @@ const postMessage = async (mess) => {
     let messageData = {
         messageID : 1,
         mTime : getTime(),
-        mDate : getDate(),
+        mDate : getCurrentDate(),
         mMessage : mess,
         accountToken : userData.user,
         posterUsername : getUserByToken(url, userData.user),

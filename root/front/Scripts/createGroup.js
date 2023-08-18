@@ -17,7 +17,7 @@ const createGroup = (name, topic, description, rules) => {
     }
 }
 
-const getDate = () => {
+const getCurrentDate = () => {
     let date = new Date()
 
     mDate = date.getDate() + "/"
@@ -35,7 +35,7 @@ const addGroup = (name, topic, description, rules) => {
         topic : topic,
         description : description,
         rules : rules,
-        creation_date : getDate(),
+        creation_date : getCurrentDate(),
         admin : 1  //This will need to chnage later and actually make it so that it gets the current user account token
     }
 
