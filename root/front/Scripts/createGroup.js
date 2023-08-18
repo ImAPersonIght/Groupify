@@ -1,5 +1,5 @@
-
 document.getElementById('modal-create-group-btn').addEventListener('click', function(event) {
+    console.log("This button has been clicked")
     event.preventDefault()
 
     let name = document.getElementById('group-name').value
@@ -18,7 +18,7 @@ const createGroup = (name, topic, description, rules) => {
     }
 }
 
-const getDate = () => {
+const getCurrentDate = () => {
     let date = new Date()
 
     mDate = date.getDate() + "/"
@@ -29,7 +29,7 @@ const getDate = () => {
 }
 
 const addGroup = (name, topic, description, rules) => {
-    const url = 'localhost:2718/room'
+    const url = 'http://localhost:2718/room'
     let data = {
         roomid : 1,
         roomname : name,

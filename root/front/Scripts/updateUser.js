@@ -1,6 +1,20 @@
 const accountToken = 1
 url = "http://localhost:2718/user/token/"
 
+document.getElementById().addEventListener('click', function(event) {
+
+})
+
+document.getElementById().addEventListener('click', function(event) {
+
+})
+
+document.getElementById().addEventListener('click', function(event) {
+
+})
+
+
+
 const checkPass = (accountToken) => {
     return fetch(`${url}?token=${accountToken}`, {
         method: 'GET',
