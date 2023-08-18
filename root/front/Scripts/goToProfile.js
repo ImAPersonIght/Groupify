@@ -1,4 +1,4 @@
-document.getElementById('go-to-profile').addEventListener('click', function(event) {
+document.getElementById('user-profile-btn').addEventListener('click', function(event) {
     event.preventDefault()
     change_window()
     console.log("Button Clicked!")
