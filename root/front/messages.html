@@ -24,7 +24,7 @@
                             </div>
                             <div id="user-buttons" class="col align-self-end">
                                 <div class="btn-group" role="group">
-                                    <button id="go-to-profile" id="user-button" type="button" class="btn btn-secondary">Profile</button>
+                                    <button id="user-button" id="go-to-profile" type="button" class="btn btn-secondary">Profile</button>
                                 </div>
                                 <div class="btn-group" role="group">
                                     <button id="user-button" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#groupModal">+</button>
@@ -72,12 +72,30 @@
                     <div id="column-two" class="col-4">
                         <div class="row justify-content-center">
                             <div id="column-four" class="col-4">
-                                <form id="search-groups" class="d-flex">
-                                    <input id="search-input" class="form-control me-2" type="search" placeholder="Enter Group Name or Topic" aria-label="Search">
-                                    <button id="search-btn" class="btn btn-outline-success" type="submit">Search</button>
-                                </form>
-                                <div>
-                                    show avaible groups to join
+                                <div id="message-title">
+                                    <h3>the group name goes here</h2>
+                                </div>
+                                <div id="message-pannel-details">
+                                    <button id="info-pannel-btn" type="button" class="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Info</button>
+                                </div>
+                                <div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+                                    <div class="offcanvas-header">
+                                      <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Informtion</h5>
+                                      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                    </div>
+                                    <div class="offcanvas-body">
+                                      <h2>Rules</h2>
+                                      <p>
+                                        the rules go here
+                                      </p>
+                                      <h2>description</h2>
+                                      <p>
+                                        the description goes here
+                                      </p>
+                                      <div id="show-users-in-group" class="overflow-auto">
+                                            the users in the group go here
+                                      </div>
+                                    </div>
                                 </div>
                             </div>
                             <div id="column-five" class="col-4">
@@ -94,7 +112,13 @@
                         </div>
                     </div>
                     <div id="column-three" class="col-4">
-                        three
+                        <form id="search-groups" class="d-flex">
+                            <input id="search-input" class="form-control me-2" type="search" placeholder="Enter Group Name or Topic" aria-label="Search">
+                            <button id="search-btn" class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                        <div id="show-available-groups" class="overflow-auto">
+                            show groups
+                        </div>
                     </div>
                 </div>
             </div>
