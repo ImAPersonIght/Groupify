@@ -18,7 +18,7 @@ const createGroup = (name, topic, description, rules) => {
     }
 }
 
-const getDate = () => {
+const getCurrentDate = () => {
     let date = new Date()
 
     mDate = date.getDate() + "/"
