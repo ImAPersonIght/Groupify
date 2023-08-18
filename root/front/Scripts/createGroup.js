@@ -18,16 +18,6 @@ const createGroup = (name, topic, description, rules) => {
     }
 }
 
-const getCurrentDate = () => {
-    let date = new Date()
-
-    mDate = date.getDate() + "/"
-    + (date.getMonth()+1)  + "/" 
-    + date.getFullYear();
-
-    return mDate
-}
-
 const addGroup = (name, topic, description, rules) => {
     const url = 'localhost:2718/room'
     let data = {
