@@ -1,4 +1,3 @@
-
 document.getElementById('modal-create-group-btn').addEventListener('click', function(event) {
     event.preventDefault()
 
