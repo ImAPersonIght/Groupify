@@ -62,8 +62,9 @@ section{
 
 /* Profile Settings */
 .btn-link{
-    color: #000000;
+    color: #fff;
     text-decoration: none;
+    font-size:large;
 }
 
 .btn-link:hover{
@@ -71,13 +72,37 @@ section{
 }
 
 /* modal */
-#modal-close-btn{
+#modal-close-UserName-btn{
     background-color: #FFF;
     color: black;
     border: 3px solid  #483a5e;
 }
 
-#modal-save-changes{
+#modal-close-password-btn{
+    background-color: #FFF;
+    color: black;
+    border: 3px solid  #483a5e;
+}
+
+#modal-close-email-btn{
+    background-color: #FFF;
+    color: black;
+    border: 3px solid  #483a5e;
+}
+
+#modal-save-UserName-changes{
+    background-color: #483a5e;
+    color: #FFF;
+    border: 3px solid  #483a5e;
+}
+
+#modal-save-password-changes{
+    background-color: #483a5e;
+    color: #FFF;
+    border: 3px solid  #483a5e;
+}
+
+#modal-save-email-changes{
     background-color: #483a5e;
     color: #FFF;
     border: 3px solid  #483a5e;
@@ -98,20 +123,30 @@ section{
 
 /* Profile */
 
+#img-container{
+    display: inline-block;
+    margin-top: 8%;
+}
+
+#info-container{
+    display: inline-block; 
+    margin-left: 30%;
+} 
+
 #user-image{
     max-width: 70px;
     max-height: 70px;
     min-height: 50px;
     min-height: 50px;
     border: 3px solid #483a5e;
-    margin: 3px;
+    margin-left: 10%;
+    margin-top: 8%;
 }
 
 #user-name{
-    margin-left: 50%;
-    
+    color: #fff;
 }
 
 #user-email{
-    margin-left: 50%;
+    color: #fff;
 }
