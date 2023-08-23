@@ -49,7 +49,7 @@ const validateMessage = (message) => {
 
 const postMessage = async (mess) => {
     const userData = await getUserData();
-    const id = getMessageID()
+    const id = await getMessageID()
     const url = "http://localhost:2718/message"
     let messageData = {
         messageID : id,
