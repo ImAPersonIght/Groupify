@@ -1,4 +1,5 @@
 // The user and message will have to come from elsewhere
+let i = 1
 
 const getUserData = async ()=>{
     const token = localStorage.getItem('accessToken')
@@ -49,9 +50,10 @@ const validateMessage = (message) => {
 
 const postMessage = async (mess) => {
     const userData = await getUserData();
+    const id = await getMessageID()
     const url = "http://localhost:2718/message"
     let messageData = {
-        messageID : 1,
+        messageID : id,
         mTime : getTime(),
         mDate : getDate(),
         mMessage : mess,
@@ -89,4 +91,21 @@ const getUserByToken = (url, acToken) => {
     } catch(err){
         console.error(err)
     }   
+}
+
+const getMessageID = async () => {
+    let id = i
+    try{
+        const response = await fetch(`http://localhost:2718/message/${id}`)
+        if(response.status === 404){
+            return i
+        }
+        else{
+            i++
+            getMessageId()
+        }
+    }
+    catch(err){
+        console.log(err)
+    }
 }
