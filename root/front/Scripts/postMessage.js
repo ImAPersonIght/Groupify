@@ -49,9 +49,10 @@ const validateMessage = (message) => {
 
 const postMessage = async (mess) => {
     const userData = await getUserData();
+    const id = await getMessageID()
     const url = "http://localhost:2718/message"
     let messageData = {
-        messageID : 1,
+        messageID : id,
         mTime : getTime(),
         mDate : getDate(),
         mMessage : mess,
@@ -89,4 +90,21 @@ const getUserByToken = (url, acToken) => {
     } catch(err){
         console.error(err)
     }   
+}
+
+const getMessageID = async () => {
+    let id = 1
+    try{
+        const response = await fetch(`http://localhost:2718/message/id/${id}`)
+        if(response.status === 404){
+            return id
+        }
+        else{
+            id++
+            getMessageId()
+        }
+    }
+    catch(err){
+        console.log(err)
+    }
 }
