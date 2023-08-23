@@ -1,5 +1,5 @@
 
-function enterMessage(){
+function enterMessage() {
     const messageInput = document.getElementById("message-input").value
     var jsonInfo = getUserData();
 
