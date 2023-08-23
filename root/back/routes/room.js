@@ -20,7 +20,12 @@ const getRoomById = (req, res)=>{
     const id = req.params.id
     try{
         dal.GetRoomByRoomid((room)=>{
-            res.json(room)
+            if(room){
+                res.json(room)
+            }
+            else{
+                res.sendStatus(404)
+            }
         }, table, id)
     }
     catch(err){

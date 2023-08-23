@@ -1,3 +1,4 @@
+var i = 1
 document.getElementById('modal-create-group-btn').addEventListener('click', function(event) {
     console.log("This button has been clicked")
     event.preventDefault()
@@ -28,16 +29,18 @@ const getCurrentDate = () => {
     return mDate
 }
 
-const addGroup = (name, topic, description, rules) => {
+const addGroup = async (name, topic, description, rules) => {
     const url = 'http://localhost:2718/room'
+    const id = await getGroupId()
+    console.log(id)
     let data = {
-        roomid : 1,
+        roomid : id,
         roomname : name,
         topic : topic,
         description : description,
         rules : rules,
         creation_date : getDate(),
-        admin : 1  //This will need to chnage later and actually make it so that it gets the current user account token
+        admin : 1  //This will need to changed later and actually make it so that it gets the current user account token
     }
 
     fetch(url, {
@@ -51,4 +54,20 @@ const addGroup = (name, topic, description, rules) => {
     .then(res => res.status)
     .then(res => console.log(res))
     .catch(error => console.error('Error:', error))
+}
+
+async function getGroupId() {
+    let id = 1
+    try {
+        while (true) {
+            const response = await fetch(`http://localhost:2718/room/${id}`)
+            if (response.status === 404) {
+                return id
+            } else {
+                id++
+            }
+        }
+    } catch (err) {
+        console.log(err)
+    }
 }
