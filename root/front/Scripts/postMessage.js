@@ -1,5 +1,3 @@
-// The user and message will have to come from elsewhere
-
 const getUserData = async ()=>{
     const token = localStorage.getItem('accessToken')
     if (!token) {
