@@ -29,9 +29,9 @@ const getCurrentDate = () => {
     return mDate
 }
 
-const addGroup = (name, topic, description, rules) => {
+const addGroup = async (name, topic, description, rules) => {
     const url = 'http://localhost:2718/room'
-    const id = getGroupId()
+    const id = await getGroupId()
     console.log(id)
     let data = {
         roomid : id,
@@ -56,19 +56,18 @@ const addGroup = (name, topic, description, rules) => {
     .catch(error => console.error('Error:', error))
 }
 
-async function getGroupId(){ //bugged have no fucking idea
-    const id = i
-    try{
-        const response = await fetch(`http://localhost:2718/room/${id}`)
-        if(response.status === 404){
-            return i
+async function getGroupId() {
+    let id = 1
+    try {
+        while (true) {
+            const response = await fetch(`http://localhost:2718/room/${id}`)
+            if (response.status === 404) {
+                return id
+            } else {
+                id++
+            }
         }
-        else{
-            i++
-            getGroupId()
-        }
-    }
-    catch(err){
+    } catch (err) {
         console.log(err)
     }
 }

@@ -19,6 +19,7 @@ const getUserData = async ()=>{
 
 const getDate = () => {
     let date = new Date()
+    
 
     mDate = date.getDate() + "/"
     + (date.getMonth()+1)  + "/" 
