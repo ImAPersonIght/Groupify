@@ -16,7 +16,12 @@ section{
     margin: 10px;
 }
 
-#user-button{
+#user-profile-btn{
+    background-color: #FFF;
+    color: black;
+    border: 3px solid  #483a5e;
+}
+#user-group-btn{
     background-color: #FFF;
     color: black;
     border: 3px solid  #483a5e;
@@ -108,7 +113,34 @@ section{
     border: 3px solid #483a5e;
 }
 
+#show-available-groups{
+    border: 3px solid #483a5e;
+    border-radius: 1%;
+    height: 90%;
+    width: 95%;
+    margin: 10px;
+}
 
+/* chat info pannel */
+
+#message-title{
+    display: inline-block;
+}
+#message-pannel-details{
+    display: inline-block;
+    padding-left: 38%;
+}
+#info-pannel-btn{
+    background-color: #FFF;
+    border: 3px solid #483a5e;
+    border-radius: 8%;
+    color: black;
+}
+#offcanvasScrolling{
+    background-color: #966AA2;
+    border: 5px solid #483a5e;
+    width: 29.5%;
+}
 
 
 /* column */
@@ -130,14 +162,14 @@ section{
     background-color: #8c5c86;
     margin: 10px 10px 20px 10px;
     width: 100%;
-    height: 150px;
+    height: 50px;
 }
 #column-five{
     background-color: #8c5c86;
     margin-left: 10px;
     margin-right: 10px;
     width: 100%;
-    height: 700px;
+    height: 800px;
 }
 
 #column-container{

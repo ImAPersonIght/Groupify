@@ -1,4 +1,5 @@
 // The user and message will have to come from elsewhere
+
 const getUserData = async ()=>{
     const token = localStorage.getItem('accessToken')
     if (!token) {
@@ -16,7 +17,7 @@ const getUserData = async ()=>{
     return null
 }
 
-const getCurrentDate = () => {
+const getDate = () => {
     let date = new Date()
 
     mDate = date.getDate() + "/"
@@ -47,12 +48,12 @@ const validateMessage = (message) => {
 }
 
 const postMessage = async (mess) => {
-    const userData = await getUserData()
+    const userData = await getUserData();
     const url = "http://localhost:2718/message"
     let messageData = {
         messageID : 1,
         mTime : getTime(),
-        mDate : getCurrentDate(),
+        mDate : getDate(),
         mMessage : mess,
         accountToken : userData.user,
         posterUsername : getUserByToken(url, userData.user),

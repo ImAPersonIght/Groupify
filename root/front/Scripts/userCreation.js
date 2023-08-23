@@ -1,4 +1,5 @@
 const url = "http://localhost:2718/user"
+var i = 1
 document.getElementById("create-form").addEventListener("submit", function(event) {
     event.preventDefault(); 
 
@@ -56,13 +57,14 @@ const validateUserData = (fName, lName, user, pass, email) => {
 }
 
 const addUser = (fName, lName, user, pass, email)=>{
+    const id = getUserId()
     let data = {
         "f_name" : fName,
         "l_name" : lName,
         "username" : user,
         "password" : pass,
         "email" : email,
-        "account_token" : 3
+        "account_token" : id
     }
 
     fetch(url, {
@@ -76,4 +78,21 @@ const addUser = (fName, lName, user, pass, email)=>{
     .then(res => res.status)
     .then(res => console.log(res))
     .catch(error => console.error('Error:', error))
+}
+
+async function getUserId(){
+    const id = i
+    try{
+        const response = await fetch(`http://localhost:2718/token/${id}`)
+        if(response.status === 404){
+            return i
+        }
+        else{
+            i++
+            getUserId()
+        }
+    }
+    catch(err){
+        console.log(err)
+    }
 }
