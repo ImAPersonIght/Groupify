@@ -19,7 +19,6 @@ const getUserData = async ()=>{
 
 const getDate = () => {
     let date = new Date()
-    
 
     mDate = date.getDate() + "/"
     + (date.getMonth()+1)  + "/" 
@@ -50,7 +49,6 @@ const validateMessage = (message) => {
 
 const postMessage = async (mess) => {
     const userData = await getUserData();
-    const id = await getMessageID()
     const url = "http://localhost:2718/message"
     let messageData = {
         messageID : id,
