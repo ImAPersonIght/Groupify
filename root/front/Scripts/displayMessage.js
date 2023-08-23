@@ -1,8 +1,9 @@
-function enterMessage(){
-    const messageInput = document.getElementById("message-input")
-    var jsonData = getUserData;
 
-    var userName = jsonData.username
+function enterMessage(){
+    const messageInput = document.getElementById("message-input").value
+    var jsonInfo = getUserData();
+
+    var userName = jsonInfo.username
 
     addElement(userName, messageInput)
 }
