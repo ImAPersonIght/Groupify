@@ -47,6 +47,7 @@ const validateMessage = (message) => {
 
 const postMessage = async (mess) => {
     const userData = await getUserData();
+    const id = await getMessageID()
     const url = "http://localhost:2718/message"
     let messageData = {
         messageID : id,
@@ -92,7 +93,7 @@ const getUserByToken = (url, acToken) => {
 const getMessageID = async () => {
     let id = 1
     try{
-        const response = await fetch(`http://localhost:2718/message/${id}`)
+        const response = await fetch(`http://localhost:2718/message/id/${id}`)
         if(response.status === 404){
             return id
         }

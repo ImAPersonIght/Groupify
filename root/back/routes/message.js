@@ -32,6 +32,6 @@ const getMessageByRoomid = (req, res)=>{
 
 router.post('/', post)
 router.get('/:roomid', getMessageByRoomid)
-router.get('/:messageid', getMessageById)
+router.get('/id/:messageid', getMessageById)
 router.use(express.json())
 module.exports = router
