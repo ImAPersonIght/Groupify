@@ -64,7 +64,9 @@ const addUser = (fName, lName, user, pass, email)=>{
         "username" : user,
         "password" : pass,
         "email" : email,
-        "account_token" : id
+        "account_token" : id,
+        "friends": [],
+        "rooms": [],
     }
 
     fetch(url, {
