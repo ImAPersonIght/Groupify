@@ -24,9 +24,13 @@ function addElement(username, message) {
   
     // add the newly created element and its content into the DOM
     const theMessage = document.getElementById("the-message");
-    document.body.insertBefore(messageHeader, theMessage)
-    document.body.insertBefore(messageInfo, theMessage);
+    theMessage.appendChild(messageHeader);
+    theMessage.appendChild(messageInfo);
+
+    //document.body.insertBefore(messageHeader, theMessage)
+    //document.body.insertBefore(messageInfo, theMessage);
   }
+
 
   // The user and message will have to come from elsewhere
 const getUserData = async ()=>{
