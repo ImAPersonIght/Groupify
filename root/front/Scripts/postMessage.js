@@ -90,14 +90,14 @@ const getUserByToken = (url, acToken) => {
 }
 
 const getMessageID = async () => {
-    let id = i
+    let id = 1
     try{
         const response = await fetch(`http://localhost:2718/message/${id}`)
         if(response.status === 404){
-            return i
+            return id
         }
         else{
-            i++
+            id++
             getMessageId()
         }
     }
