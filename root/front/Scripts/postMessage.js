@@ -1,6 +1,4 @@
-// The user and message will have to come from elsewhere
-
-const getUserData = async ()=>{
+const getDataFromUser = async ()=>{
     const token = localStorage.getItem('accessToken')
     if (!token) {
         console.error('Access token not found')
@@ -19,7 +17,6 @@ const getUserData = async ()=>{
 
 const getDate = () => {
     let date = new Date()
-    
 
     mDate = date.getDate() + "/"
     + (date.getMonth()+1)  + "/" 
@@ -49,7 +46,7 @@ const validateMessage = (message) => {
 }
 
 const postMessage = async (mess) => {
-    const userData = await getUserData();
+    const userData = await getDataFromUser();
     const url = "http://localhost:2718/message"
     let messageData = {
         messageID : 1,
