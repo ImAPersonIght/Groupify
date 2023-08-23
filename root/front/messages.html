@@ -10,7 +10,8 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
         <link href="./Css/messages.css" rel="stylesheet">
         <script src="./Scripts/createGroup.js" defer></script>
-        <script src="./Scripts/postMessage.js"></script>
+        <script src="./Scripts/postMessage.js" defer></script>
+        <script src="./Scripts/displayMessage.js" defer></script>
     </head>
     <body id="body">
         <section>
@@ -100,12 +101,15 @@
                             </div>
                             <div id="column-five" class="col-4">
                                 <div id="messages-container" class="overflow-auto">
-                                    <p id="user-messages"> text goes here when the user clicks the enter button</p>
+                                    <div id="the-message">
+                                        <p id="user-messages"> text goes here when the user clicks the enter button</p>
+                                    </div>
+                                    
                                 </div>
                                 <div id="message-button-container" class="input-group">
                                     <input id="message-input" type="text" class="form-control" placeholder="Enter a message" aria-label="A Message" aria-describedby="basic-addon2">
                                     <div class="input-group-append">
-                                      <button id="message-button" class="btn btn-outline-secondary" type="button">Enter</button>
+                                      <button id="message-button" onclick="enterMessage()" class="btn btn-outline-secondary" type="button">Enter</button>
                                     </div>
                                 </div>
                             </div>
