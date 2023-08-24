@@ -66,7 +66,7 @@ async function getGroupId() {
             } else {
                 id++
             }
-        }
+        }   
     } catch (err) {
         console.log(err)
     }

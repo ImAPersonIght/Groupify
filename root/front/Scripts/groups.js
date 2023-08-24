@@ -3,7 +3,7 @@ const groupContainer = document.getElementById("groups-container")
 async function showGroup(){
 
     //get user data
-    var UserData = getUserData();
+    var UserData = await getUserDataForGroup();
     var roomIds = UserData.rooms;
 
     for(i = 0; i < roomIds.length; i ++){
@@ -17,9 +17,16 @@ async function showGroup(){
         // create a new div element
         const groupDiv = document.createElement("div");
         groupDiv.setAttribute(`id", "group-select-${currentRoom}`)
-        groupDiv.onclick = function(){
+        groupDiv.onclick = async function(){
             //show the group info
             //NOT FINSIHED NEEDS TO SHOW INFO ON THE PAGE BASED ON THE CLCIKED GROUP
+            const TITLE = document.getElementById("message-title");
+            const DESCRIPTION = document.getElementById("description");
+            const RULES = document.getElementById("rules")
+
+            TITLE.innerHTML = data.roomname;
+            DESCRIPTION.innerHTML = data.description;
+            RULES.innerHTML = data.rules;
         }
 
         const groupTitle = document.createElement("h1");
@@ -40,7 +47,15 @@ async function showGroup(){
     }
 }
 
-const getUserData = async ()=>{
+async function showUsersInGroup(UserJson){
+
+}
+
+async function loadMessages(messageJson){
+
+}
+
+const getUserDataForGroup = async ()=>{
     const token = localStorage.getItem('accessToken')
     if (!token) {
         console.error('Access token not found')
@@ -56,3 +71,5 @@ const getUserData = async ()=>{
     }
     return null
 }
+
+showGroup();
