@@ -1,12 +1,12 @@
 
 function enterMessage() {
     const messageInput = document.getElementById("message-input").value
-    var jsonInfo = getUserData();
+    var jsonInfo = getUserDataForMessage();
 
     var userName = jsonInfo.username
 
     addElement(userName, messageInput)
-}
+}   
 
 
 function addElement(username, message) {
@@ -21,7 +21,7 @@ function addElement(username, message) {
     //add the text to the tags
     messageHeader.appendChild(header);
     messageInfo.appendChild(content);
-  
+
     // add the newly created element and its content into the DOM
     const theMessage = document.getElementById("the-message");
     theMessage.appendChild(messageHeader);
@@ -29,11 +29,11 @@ function addElement(username, message) {
 
     //document.body.insertBefore(messageHeader, theMessage)
     //document.body.insertBefore(messageInfo, theMessage);
-  }
+}
 
 
   // The user and message will have to come from elsewhere
-const getUserData = async ()=>{
+const getUserDataForMessage = async ()=>{
     const token = localStorage.getItem('accessToken')
     if (!token) {
         console.error('Access token not found')

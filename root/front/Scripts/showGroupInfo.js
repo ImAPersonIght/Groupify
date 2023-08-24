@@ -6,7 +6,7 @@ const groupDescription = document.getElementById("description")
 //RUN THIS FUNCTION WHEN THE CLICK ON A GROUP
 async function showGroupData(){
 
-    var data = await getUserData();
+    var data = await getUserDataForGroup();
 
     //get the info based on the room they clicked on
 
@@ -16,7 +16,7 @@ async function showGroupData(){
 }
 
   // The user and message will have to come from elsewhere
-const getUserData = async ()=>{
+const getUserDataForGroup = async ()=>{
     const token = localStorage.getItem('accessToken')
     if (!token) {
         console.error('Access token not found')
