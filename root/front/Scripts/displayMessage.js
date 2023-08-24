@@ -1,4 +1,4 @@
-
+let count = 1
 async function enterMessage() {
     const messageInput = document.getElementById("message-input").value
     await validateMessage(messageInput)
@@ -88,6 +88,7 @@ const validateMessage = (message) => {
 const postMessage = async (mess) => {
     const userData = await getUserDataForMessage();
     const id = await getMessageID()
+    console.log(id)
     const url = "http://localhost:2718/message"
     let messageData = {
         messageID : id,
@@ -116,15 +117,15 @@ const postMessage = async (mess) => {
 }
 
 const getMessageID = async () => {
-    let id = 1
+    let id = count
     try{
         const response = await fetch(`http://localhost:2718/message/id/${id}`)
         if(response.status === 404){
             return id
         }
         else{
-            id++
-            getMessageId()
+            count++
+            return getMessageID()
         }
     }
     catch(err){
