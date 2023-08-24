@@ -3,7 +3,7 @@ const groupContainer = document.getElementById("groups-container")
 async function showGroup(){
 
     //get user data
-    var UserData = await getUserData();
+    var UserData = await getUserDataForGroup();
     var roomIds = UserData.rooms;
 
     for(i = 0; i < roomIds.length; i ++){
@@ -57,7 +57,7 @@ async function loadMessages(messageJson){
 
 }
 
-const getUserData = async ()=>{
+const getUserDataForGroup = async ()=>{
     const token = localStorage.getItem('accessToken')
     if (!token) {
         console.error('Access token not found')
