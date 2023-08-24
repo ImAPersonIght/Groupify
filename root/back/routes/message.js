@@ -29,10 +29,23 @@ const getMessageByRoomid = (req, res)=>{
     }
 }
 
+const getMessageById = (req, res)=>{
+    const messageid = req.params.messageid
+    try{
+        dal.getMessageById((data)=>{
+            res.json(data)
+        }, table, messageid)
+    }
+    catch(err){
+        console.log(err)
+        res.sendStatus(500)
+    }
+}
+
 
 
 router.post('/', post)
 router.get('/:roomid', getMessageByRoomid)
-// router.get('/id/:messageid', getMessageById)
+router.get('/id/:messageid', getMessageById)
 router.use(express.json())
 module.exports = router
