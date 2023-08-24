@@ -16,7 +16,7 @@ async function showGroup(){
 
         // create a new div element
         const groupDiv = document.createElement("div");
-        groupDiv.setAttribute(`id", "group-select-${currentRoom}`)
+        groupDiv.setAttribute("id", `group-select-${currentRoom}`)
         groupDiv.onclick = async function(){
             //show the group info
             

@@ -13,6 +13,7 @@ async function searchGroup(){
     const data = await response.json()
 
     for(i = 0; i < data.length; i++){
+        console.log("im in the loop")
         var currentGroup = data[i];
 
         const addGroupDiv = document.createElement("div");
@@ -32,5 +33,6 @@ async function searchGroup(){
 
         addGroupDiv.appendChild(groupHeader)
         addGroupDiv.appendChild(groupTopic)
+        console.log('group should display here')
     }
 }
