@@ -71,3 +71,5 @@ const getUserData = async ()=>{
     }
     return null
 }
+
+showGroup();
