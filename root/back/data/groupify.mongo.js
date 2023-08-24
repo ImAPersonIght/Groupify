@@ -71,6 +71,16 @@ const getRoomById = async (callback, table, id)=>{
     })
 }
 
+const getRoomByName = async (callback, table, name)=>{
+    executeQuery(async (client)=>{
+        const database = client.db(table)
+        const collection = database.collection(table + "s")
+        const query = {roomname: name}
+        const room = await collection.findOne(query)
+        callback(room)
+    })
+}
+
 const updateUser = (callback, table, userToken, change, changeData)=>{
     executeQuery(async (client)=>{
         const database = client.db(table)
@@ -91,6 +101,7 @@ module.exports = {
     GetMessageByRoomid:getMessageByRoomid,
     getMessageById:getMessageById,
     GetRoomByRoomid:getRoomById,
+    GetRoomByName: getRoomByName,
     Post:postData,
     Update:updateUser
 }

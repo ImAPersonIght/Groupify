@@ -14,7 +14,7 @@ const post = (req, res)=>{
         console.log(err)
         res.sendStatus(500)
     }
-}
+}   
 
 const getMessageByRoomid = (req, res)=>{
     const roomid = req.params.roomid

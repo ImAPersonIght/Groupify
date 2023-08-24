@@ -106,9 +106,9 @@ const postMessage = async (mess) => {
         },
         body: JSON.stringify(messageData)
     })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data)
+    .then(response => response.status)
+    .then(response => {
+        console.log(response)
     })
     .catch(error => {
         console.error('Error:', error)
@@ -118,7 +118,7 @@ const postMessage = async (mess) => {
 const getMessageID = async () => {
     let id = 1
     try{
-        const response = await fetch(`http://localhost:2718/message/id/${id}`)
+        const response = await fetch(`http://localhost:2718/message/${id}`)
         if(response.status === 404){
             return id
         }
