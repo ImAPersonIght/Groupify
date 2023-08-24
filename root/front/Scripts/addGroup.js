@@ -1,3 +1,9 @@
+document.getElementById('search-btn').addEventListener('click', function(event) {
+    event.preventDefault()
+    searchGroup();
+    console.log("Button Clicked!")
+})
+
 
 async function searchGroup(){
     const searchInput = document.getElementById("search-input").value
