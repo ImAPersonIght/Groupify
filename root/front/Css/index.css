@@ -9,22 +9,20 @@
 }
 
 h1{
-    color: #483a5e;
+    color: #8c5c86;
     font-size: 50px;
-    font-family: 'Lato', sans-serif;
     text-align: center;
     margin-top: 10px;
 }
 
 h3{
-    color: #483a5e;
-    font-family: 'Times New Roman', Times, serif;
+    color: #8c5c86;
     text-align: center;
     margin-top: 10px;
 }
 
 body{
-    background-color: #b39adc;
+    background-color: #483a5e;
 }
 
 footer{
