@@ -3,7 +3,7 @@ const groupContainer = document.getElementById("groups-container")
 async function showGroup(){
 
     //get user data
-    var UserData = getUserData();
+    var UserData = await getUserData();
     var roomIds = UserData.rooms;
 
     for(i = 0; i < roomIds.length; i ++){
