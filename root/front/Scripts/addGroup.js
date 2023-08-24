@@ -16,7 +16,7 @@ async function searchGroup(){
         var currentGroup = data[i];
 
         const addGroupDiv = document.createElement("div");
-        addGroupDiv.setAttribute(`id, group-add-${currentGroup}`)
+        addGroupDiv.setAttribute("id" , `group-add-${currentGroup}`)
         addGroupDiv.onclick = async function(){
             //show a are you sure popup
         }
