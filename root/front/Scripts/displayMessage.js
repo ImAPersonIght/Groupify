@@ -86,7 +86,8 @@ const validateMessage = (message) => {
 }
 
 const postMessage = async (mess) => {
-    const userData = await getUserDataForMessage()
+    let userID = await getUserDataForMessage()
+    const userData = await getUserById(userID.user)
     console.log(userData)
     const id = await getMessageID()
     console.log(id)
@@ -115,6 +116,16 @@ const postMessage = async (mess) => {
     .catch(error => {
         console.error('Error:', error)
     });
+}
+
+const getUserById = (accountToken) => {
+    fetch(`http://localhost:2718/token/${accountToken}`)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
+        return data.json
+    })
+    .catch(error => console.error('An error occurred:', error))
 }
 
 const getMessageID = async () => {
