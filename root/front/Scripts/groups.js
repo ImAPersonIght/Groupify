@@ -24,7 +24,9 @@ async function showGroup(){
             const DESCRIPTION = document.getElementById("description");
             const RULES = document.getElementById("rules")
 
-            
+            TITLE.innerHTML = data.roomname;
+            DESCRIPTION.innerHTML = data.description;
+            RULES.innerHTML = data.rules;
         }
 
         const groupTitle = document.createElement("h1");
@@ -46,7 +48,7 @@ async function showGroup(){
 }
 
 async function showUsersInGroup(UserJson){
-    
+
 }
 
 async function loadMessages(messageJson){
