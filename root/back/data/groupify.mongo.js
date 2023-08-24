@@ -76,7 +76,7 @@ const getRoomByName = async (callback, table, name)=>{
         const database = client.db(table)
         const collection = database.collection(table + "s")
         const query = {roomname: name}
-        const room = await collection.findOne(query)
+        const room = await collection.find(query).toArray()
         callback(room)
     })
 }
