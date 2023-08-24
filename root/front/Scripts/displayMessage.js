@@ -12,7 +12,7 @@ async function enterMessage() {
 
 
 function addElement(username, message) {
-    // create a new div element
+    // create a new elements
     const messageHeader = document.createElement("h3");
     const messageInfo = document.createElement("p")
 
