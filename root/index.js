@@ -39,6 +39,7 @@ app.post('/decode', authenticateToken, (req, res)=>{
 
 app.post('/login', (req, res)=>{
     const user_id = req.body.account_token
+    console.log(user_id)
     const user = {user: user_id}
     const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET)
     res.json(accessToken)
