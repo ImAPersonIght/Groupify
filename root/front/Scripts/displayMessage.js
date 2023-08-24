@@ -123,7 +123,7 @@ const getUserById = (accountToken) => {
     .then(response => response.json())
     .then(data => {
         console.log(data)
-        return data.json
+        return data
     })
     .catch(error => console.error('An error occurred:', error))
 }
