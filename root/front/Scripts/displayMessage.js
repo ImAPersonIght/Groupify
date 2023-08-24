@@ -1,9 +1,9 @@
 
-function enterMessage() {
+async function enterMessage() {
     const messageInput = document.getElementById("message-input").value
-    validateMessage(messageInput)
+    await validateMessage(messageInput)
 
-    var jsonInfo = getUserDataForMessage();
+    var jsonInfo = await getUserDataForMessage();
 
     var userName = jsonInfo.username
 
