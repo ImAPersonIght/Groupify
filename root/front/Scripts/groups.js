@@ -19,7 +19,7 @@ async function showGroup(){
         groupDiv.setAttribute(`id", "group-select-${currentRoom}`)
         groupDiv.onclick = async function(){
             //show the group info
-            //NOT FINSIHED NEEDS TO SHOW INFO ON THE PAGE BASED ON THE CLCIKED GROUP
+            
             const TITLE = document.getElementById("message-title");
             const DESCRIPTION = document.getElementById("description");
             const RULES = document.getElementById("rules")
@@ -27,6 +27,8 @@ async function showGroup(){
             TITLE.innerHTML = data.roomname;
             DESCRIPTION.innerHTML = data.description;
             RULES.innerHTML = data.rules;
+
+            //NOT FINSIHED NEEDS TO SHOW INFO ON THE PAGE BASED ON THE CLCIKED GROUP
         }
 
         const groupTitle = document.createElement("h1");

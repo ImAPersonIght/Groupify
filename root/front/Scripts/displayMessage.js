@@ -106,9 +106,9 @@ const postMessage = async (mess) => {
         },
         body: JSON.stringify(messageData)
     })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data)
+    .then(response => response.status)
+    .then(response => {
+        console.log(response)
     })
     .catch(error => {
         console.error('Error:', error)
