@@ -17,9 +17,14 @@ async function showGroup(){
         // create a new div element
         const groupDiv = document.createElement("div");
         groupDiv.setAttribute(`id", "group-select-${currentRoom}`)
-        groupDiv.onclick = function(){
+        groupDiv.onclick = async function(){
             //show the group info
             //NOT FINSIHED NEEDS TO SHOW INFO ON THE PAGE BASED ON THE CLCIKED GROUP
+            const TITLE = document.getElementById("message-title");
+            const DESCRIPTION = document.getElementById("description");
+            const RULES = document.getElementById("rules")
+
+            
         }
 
         const groupTitle = document.createElement("h1");
@@ -38,6 +43,14 @@ async function showGroup(){
 
         groupContainer.appendChild(groupDiv);
     }
+}
+
+async function showUsersInGroup(UserJson){
+    
+}
+
+async function loadMessages(messageJson){
+
 }
 
 const getUserData = async ()=>{
