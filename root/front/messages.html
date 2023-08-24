@@ -11,12 +11,8 @@
         <link href="./Css/messages.css" rel="stylesheet">
         <script src="./Scripts/createGroup.js" defer></script>
         <script src="./Scripts/displayMessage.js" defer></script>
-<<<<<<< HEAD
         <script src="./Scripts/showGroupInfo.js"></script> 
-=======
-        <script src="./Scripts/groups.js"></script> 
->>>>>>> 1645e76293ee6354034e04146e77f2dbfad3ee3c
-
+        <script src="./Scripts/addGroup.js"></script>
     </head>
     <body id="body">
         <section>
@@ -123,7 +119,7 @@
                     <div id="column-three" class="col-4">
                         <form id="search-groups" class="d-flex">
                             <input id="search-input" class="form-control me-2" type="search" placeholder="Enter Group Name or Topic" aria-label="Search">
-                            <button id="search-btn" class="btn btn-outline-success" type="submit">Search</button>
+                            <button id="search-btn" class="btn btn-outline-success" type="submit" onclick="searchGroup()">Search</button>
                         </form>
                         <div id="show-available-groups" class="overflow-auto">
                             show groups
