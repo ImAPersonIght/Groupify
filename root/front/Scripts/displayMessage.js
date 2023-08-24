@@ -118,8 +118,8 @@ const postMessage = async (mess) => {
     });
 }
 
-const getUserById = (accountToken) => {
-    fetch(`http://localhost:2718/user/token/${accountToken}`)
+const getUserById = async (accountToken) => {
+    await fetch(`http://localhost:2718/user/token/${accountToken}`)
     .then(response => response.json())
     .then(data => {
         console.log(data)
