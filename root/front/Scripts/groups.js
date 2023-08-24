@@ -11,12 +11,12 @@ async function showGroup(){
         var currentRoom = roomIds[i];
 
         //get the rooms info
-        const response = await fetch(`localhost:2718/room/${currentRoom}`)
+        const response = await fetch(`http://localhost:2718/room/${currentRoom}`)
         const data = await response.json()
 
         // create a new div element
         const groupDiv = document.createElement("div");
-        groupDiv.setAttribute(`id", "group-select-${currentRoom}`)
+        groupDiv.setAttribute("id", `group-select-${currentRoom}`)
         groupDiv.onclick = async function(){
             //show the group info
             

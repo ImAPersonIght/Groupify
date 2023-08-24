@@ -9,14 +9,15 @@ async function searchGroup(){
     const searchInput = document.getElementById("search-input").value
 
     //get the rooms info
-    const response = await fetch(`localhost:2718/room/name/${searchInput}`)
+    const response = await fetch(`http://localhost:2718/room/name/${searchInput}`)
     const data = await response.json()
 
     for(i = 0; i < data.length; i++){
+        console.log("im in the loop")
         var currentGroup = data[i];
 
         const addGroupDiv = document.createElement("div");
-        addGroupDiv.setAttribute(`id", "group-add-${currentGroup}`)
+        addGroupDiv.setAttribute("id" , `group-add-${currentGroup}`)
         addGroupDiv.onclick = async function(){
             //show a are you sure popup
         }
@@ -32,5 +33,6 @@ async function searchGroup(){
 
         addGroupDiv.appendChild(groupHeader)
         addGroupDiv.appendChild(groupTopic)
+        console.log('group should display here')
     }
 }
