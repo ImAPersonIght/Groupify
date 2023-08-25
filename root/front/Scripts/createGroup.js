@@ -32,6 +32,7 @@ const getCurrentDate = () => {
 const addGroup = async (name, topic, description, rules) => {
     const url = 'http://localhost:2718/room'
     const id = await getGroupId()
+    const adminID = await getUserID()
     console.log(id)
     let data = {
         roomid : id,
@@ -40,7 +41,7 @@ const addGroup = async (name, topic, description, rules) => {
         description : description,
         rules : rules,
         creation_date : getDate(),
-        admin : 1  //This will need to changed later and actually make it so that it gets the current user account token
+        admin : adminIDs.user  
     }
 
     fetch(url, {
@@ -70,4 +71,21 @@ async function getGroupId() {
     } catch (err) {
         console.log(err)
     }
+}
+
+const getUserID = async ()=>{
+    const token = localStorage.getItem('accessToken')
+    if (!token) {
+        console.error('Access token not found')
+    }
+    else{
+        const userData = await fetch('http://localhost:2718/decode', {
+            method:'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        return userData.json()
+    }
+    return null
 }
