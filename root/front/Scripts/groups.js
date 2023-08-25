@@ -3,16 +3,20 @@ const groupContainer = document.getElementById("groups-container")
 async function showGroup(){
 
     //get user data
-    var UserData = await getUserDataForGroup();
-    var roomIds = UserData.rooms;
+    const userToken = await getUserDataForGroup()
+    const userData = await getUserByIdForGroup(userToken.user)
+    console.log(userData)
+    let roomIds = userData.rooms
+    console.log(roomIds)
 
-    for(i = 0; i < roomIds.length; i ++){
+    for(let i = 1; i < roomIds.length; i ++){
         //for each 
         var currentRoom = roomIds[i];
 
         //get the rooms info
-        const response = await fetch(`http://localhost:2718/room/${currentRoom.roomname}`)
+        const response = await fetch(`http://localhost:2718/room/${currentRoom}`)
         const data = await response.json()
+        console.log(data)
 
         // create a new div element
         const groupDiv = document.createElement("div");
@@ -47,10 +51,10 @@ async function showGroup(){
         groupDiv.appendChild(groupTitle);
         groupDiv.appendChild(groupTopic);
 
-        groupContainer.appendChild(groupDiv);
+        // groupContainer.appendChild(groupDiv);
 
         //adds the elemnt to the file
-        document.getElementById('groups-container').appendChild(groupContainer);
+        document.getElementById('groups-container').appendChild(groupDiv);
     }
 }
 
@@ -101,6 +105,16 @@ const getUserDataForGroup = async ()=>{
         return userData.json()
     }
     return null
+}
+
+const getUserByIdForGroup = async (accountToken) => {
+    return await fetch(`http://localhost:2718/user/token/${accountToken}`)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
+        return data
+    })
+    .catch(error => console.error('An error occurred:', error))
 }
 
 showGroup();

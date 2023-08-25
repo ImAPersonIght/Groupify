@@ -42,8 +42,6 @@ const getMessageById = (req, res)=>{
     }
 }
 
-
-
 router.post('/', post)
 router.get('/:roomid', getMessageByRoomid)
 router.get('/id/:messageid', getMessageById)
