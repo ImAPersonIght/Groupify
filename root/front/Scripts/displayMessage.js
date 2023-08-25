@@ -5,9 +5,9 @@ async function enterMessage() {
 
     var jsonInfo = await getUserDataForMessage();
 
-    var userName = jsonInfo.username;
+    var userName = await getUserById(jsonInfo.user)
 
-    addElement(userName, messageInput)
+    addElement(userName.username, messageInput)
 }   
 
 
