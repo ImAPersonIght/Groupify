@@ -87,12 +87,8 @@ const validateMessage = (message) => {
 
 const postMessage = async (mess) => {
     let userID = await getUserDataForMessage()
-    console.log("This is the user ID: " + userID.user)
     let userData = await getUserById(userID.user)
-    console.log(userData)
-    console.log("This is the users data: " + userData.username)
     const id = await getMessageID()
-    console.log(id)
     const url = "http://localhost:2718/message"
     let messageData = {
         message_id : id,
