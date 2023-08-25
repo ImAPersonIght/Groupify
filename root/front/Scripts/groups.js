@@ -67,7 +67,7 @@ async function loadMessages(id){
 
         var currentMessage = data[i];
 
-
+        
         const messageDiv = document.createElement('div')
 
         const userName = document.createElement("h1")
