@@ -46,6 +46,9 @@ async function showGroup(){
         groupDiv.appendChild(groupTopic);
 
         groupContainer.appendChild(groupDiv);
+
+        //adds the elemnt to the file
+        document.getElementById('groups-container').appendChild(groupContainer);
     }
 }
 
@@ -53,8 +56,32 @@ async function showUsersInGroup(UserJson){
 
 }
 
-async function loadMessages(messageJson){
+async function loadMessages(id){
+    const response = await fetch(`http://localhost:2718/message/${id}`)
+    const data = await response.json()
 
+    for(i=0; i < data.length; i++){
+
+        var currentMessage = data[i];
+
+
+        const messageDiv = document.createElement('div')
+
+        const userName = document.createElement("h1")
+        const message = document.createElement("p")
+
+        var userData = document.createTextNode(currentMessage.poster_unsername)
+        var messageData = document.createTextNode(currentMessage.message_data)
+
+        userName.appendChild(userData);
+        message.append(messageData);
+
+        messageDiv.appendChild(userName);
+        messageDiv.appendChild(message);
+        
+        document.getElementById('show-users-in-group').appendChild(messageDiv);
+    }
+    
 }
 
 const getUserDataForGroup = async ()=>{
