@@ -5,9 +5,9 @@ async function enterMessage() {
 
     var jsonInfo = await getUserDataForMessage();
 
-    var userName = jsonInfo.username;
+    var userName = await getUserById(jsonInfo.user)
 
-    addElement(userName, messageInput)
+    addElement(userName.username, messageInput)
 }   
 
 
@@ -88,18 +88,16 @@ const validateMessage = (message) => {
 const postMessage = async (mess) => {
     let userID = await getUserDataForMessage()
     let userData = await getUserById(userID.user)
-    console.log(userData)
     const id = await getMessageID()
-    console.log(id)
     const url = "http://localhost:2718/message"
     let messageData = {
-        messageID : id,
-        mTime : getTime(),
-        mDate : getDate(),
-        mMessage : mess,
-        accountToken : userData.account_token,
-        posterUsername : userData.username,
-        roomID : 1 // Need to find a way to get roomID
+        message_id : id,
+        Time : getTime(),
+        Date : getDate(),
+        message_data : mess,
+        user_token : userData.account_token,
+        poster_username : userData.username,
+        roomid : 1 // Need to find a way to get roomID
     }
     try{
         const response = await fetch(url, {
@@ -118,7 +116,7 @@ const postMessage = async (mess) => {
 }
 
 const getUserById = async (accountToken) => {
-    return fetch(`http://localhost:2718/user/token/${accountToken}`)
+    return await fetch(`http://localhost:2718/user/token/${accountToken}`)
     .then(response => response.json())
     .then(data => {
         console.log(data)
