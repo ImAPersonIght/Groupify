@@ -24,7 +24,7 @@ async function searchGroup(){
                 const groupbtn = document.createElement("button")
                 groupbtn.setAttribute("id", `group-btn-${currentGroup}`)
                 groupbtn.onclick = async function(){
-                    addUserToGroup(currentGroup)
+                    await addUserToGroup(currentGroup)
                 }
         
                 const groupHeader = document.createElement("h3");
