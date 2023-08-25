@@ -89,18 +89,19 @@ const postMessage = async (mess) => {
     let userID = await getUserDataForMessage()
     console.log("This is the user ID: " + userID.user)
     let userData = await getUserById(userID.user)
-    console.log("This is the users data: " + userData)
+    console.log(userData)
+    console.log("This is the users data: " + userData.username)
     const id = await getMessageID()
     console.log(id)
     const url = "http://localhost:2718/message"
     let messageData = {
-        messageID : id,
-        mTime : getTime(),
-        mDate : getDate(),
-        mMessage : mess,
-        accountToken : userData.account_token,
-        posterUsername : userData.username,
-        roomID : 1 // Need to find a way to get roomID
+        message_id : id,
+        Time : getTime(),
+        Date : getDate(),
+        message_data : mess,
+        user_token : userData.account_token,
+        poster_username : userData.username,
+        roomid : 1 // Need to find a way to get roomID
     }
     try{
         const response = await fetch(url, {
