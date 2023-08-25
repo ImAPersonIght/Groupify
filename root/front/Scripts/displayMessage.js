@@ -97,7 +97,7 @@ const postMessage = async (mess) => {
         message_data : mess,
         user_token : userData.account_token,
         poster_username : userData.username,
-        roomid : 1 // Need to find a way to get roomID
+        roomid : localStorage.getItem("currentRoom") // Need to find a way to get roomID
     }
     try{
         const response = await fetch(url, {

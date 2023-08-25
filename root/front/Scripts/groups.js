@@ -32,6 +32,10 @@ async function showGroup(){
             DESCRIPTION.innerHTML = data.description;
             RULES.innerHTML = data.rules;
 
+            localStorage.setItem("currentGroup", currentRoom)
+
+            localStorage.setItem("currentGroup", currentRoom)
+
             // loadMessages(room)
 
             //NOT FINSIHED NEEDS TO SHOW INFO ON THE PAGE BASED ON THE CLCIKED GROUP
