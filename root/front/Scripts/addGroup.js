@@ -20,8 +20,12 @@ async function searchGroup(){
         
                 const addGroupDiv = document.createElement("div");
                 addGroupDiv.setAttribute("id" , `group-add-${currentGroup}`)
-                addGroupDiv.onclick = async function(){
-                    //show a are you sure popup
+
+                const groupbtn = document.createElement("button")
+                groupbtn.setAttribute("id", `group-btn-${currentGroup}`)
+                groupbtn.onclick = async function(){
+                    //add group to user
+                    //NEEDS FUNCTION TO ADD THE ROOM ID TO THE USER LOGGED IN
                 }
         
                 const groupHeader = document.createElement("h3");

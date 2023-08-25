@@ -87,8 +87,9 @@ const validateMessage = (message) => {
 
 const postMessage = async (mess) => {
     let userID = await getUserDataForMessage()
+    console.log("This is the user ID: " + userID.user)
     let userData = await getUserById(userID.user)
-    console.log(userData)
+    console.log("This is the users data: " + userData)
     const id = await getMessageID()
     console.log(id)
     const url = "http://localhost:2718/message"
@@ -118,7 +119,7 @@ const postMessage = async (mess) => {
 }
 
 const getUserById = async (accountToken) => {
-    return fetch(`http://localhost:2718/user/token/${accountToken}`)
+    return await fetch(`http://localhost:2718/user/token/${accountToken}`)
     .then(response => response.json())
     .then(data => {
         console.log(data)
