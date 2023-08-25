@@ -11,7 +11,7 @@ async function showGroup(){
         var currentRoom = roomIds[i];
 
         //get the rooms info
-        const response = await fetch(`http://localhost:2718/room/${currentRoom}`)
+        const response = await fetch(`http://localhost:2718/room/${currentRoom.roomname}`)
         const data = await response.json()
 
         // create a new div element
@@ -27,6 +27,8 @@ async function showGroup(){
             TITLE.innerHTML = data.roomname;
             DESCRIPTION.innerHTML = data.description;
             RULES.innerHTML = data.rules;
+
+            loadMessages(currentRoom.roomIds)
 
             //NOT FINSIHED NEEDS TO SHOW INFO ON THE PAGE BASED ON THE CLCIKED GROUP
         }

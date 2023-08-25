@@ -39,7 +39,9 @@ async function searchGroup(){
         
                 addGroupDiv.appendChild(groupHeader)
                 addGroupDiv.appendChild(groupTopic)
-                console.log('group should display here')
+                addGroupDiv.appendChild(groupbtn)
+                
+                document.getElementById('show-available-groups').appendChild(addGroupDiv);
             }
     }catch(error){
         console.log(error)
