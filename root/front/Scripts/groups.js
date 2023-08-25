@@ -43,7 +43,7 @@ async function showGroup(){
         })
 
         const groupTitle = document.createElement("h1");
-        const groupTopic = document.createElement("h3");
+        const groupTopic = document.createElement("p");
 
         //the users message and info
         var title = document.createTextNode(data.roomname);
