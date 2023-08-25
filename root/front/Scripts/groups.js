@@ -21,6 +21,8 @@ async function showGroup(){
         groupDiv.setAttribute("id", `group-select-${currentRoom}`)
         groupDiv.addEventListener('click', function(event) {
             //show the group info
+            const room = currentRoom
+            console.log(room)
             console.log("im working")
             const TITLE = document.getElementById("message-title");
             const DESCRIPTION = document.getElementById("description");
@@ -32,7 +34,9 @@ async function showGroup(){
 
             localStorage.setItem("currentGroup", currentRoom)
 
-            loadMessages(currentRoom.roomIds)
+            localStorage.setItem("currentGroup", currentRoom)
+
+            // loadMessages(room)
 
             //NOT FINSIHED NEEDS TO SHOW INFO ON THE PAGE BASED ON THE CLCIKED GROUP
 
@@ -62,6 +66,7 @@ async function showUsersInGroup(UserJson){
 }
 
 async function loadMessages(id){
+    console.log(id)
     const response = await fetch(`http://localhost:2718/message/${id}`)
     const data = await response.json()
 
