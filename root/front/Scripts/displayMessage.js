@@ -90,6 +90,8 @@ const postMessage = async (mess) => {
     let userData = await getUserById(userID.user)
     const id = await getMessageID()
     const url = "http://localhost:2718/message"
+    let currentRoom = localStorage.getItem("currentRoom")
+    console.log(currentRoom)
     let messageData = {
         message_id : id,
         Time : getTime(),
@@ -97,7 +99,7 @@ const postMessage = async (mess) => {
         message_data : mess,
         user_token : userData.account_token,
         poster_username : userData.username,
-        roomid : localStorage.getItem("currentRoom") // Need to find a way to get roomID
+        roomid : currentRoom // Need to find a way to get roomID
     }
     try{
         const response = await fetch(url, {
