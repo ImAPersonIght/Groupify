@@ -19,11 +19,9 @@ async function showGroup(){
         // create a new div element
         const groupDiv = document.createElement("div");
         groupDiv.setAttribute("id", `group-select-${currentRoom}`)
-        groupDiv.addEventListener('click', function(event) {
+        groupDiv.onclick = async function(){
             //show the group info
-            const room = currentRoom
-            console.log(room)
-            console.log("im working")
+            
             const TITLE = document.getElementById("message-title");
             const DESCRIPTION = document.getElementById("description");
             const RULES = document.getElementById("rules")
@@ -32,15 +30,10 @@ async function showGroup(){
             DESCRIPTION.innerHTML = data.description;
             RULES.innerHTML = data.rules;
 
-            localStorage.setItem("currentGroup", currentRoom)
-
-            localStorage.setItem("currentGroup", currentRoom)
-
-            // loadMessages(room)
+            loadMessages(currentRoom.roomIds)
 
             //NOT FINSIHED NEEDS TO SHOW INFO ON THE PAGE BASED ON THE CLCIKED GROUP
-
-        })
+        }
 
         const groupTitle = document.createElement("h1");
         const groupTopic = document.createElement("h3");
@@ -56,6 +49,7 @@ async function showGroup(){
         groupDiv.appendChild(groupTitle);
         groupDiv.appendChild(groupTopic);
 
+
         //adds the elemnt to the file
         document.getElementById('groups-container').appendChild(groupDiv);
     }
@@ -66,7 +60,6 @@ async function showUsersInGroup(UserJson){
 }
 
 async function loadMessages(id){
-    console.log(id)
     const response = await fetch(`http://localhost:2718/message/${id}`)
     const data = await response.json()
 
@@ -74,7 +67,7 @@ async function loadMessages(id){
 
         var currentMessage = data[i];
 
-        
+
         const messageDiv = document.createElement('div')
 
         const userName = document.createElement("h1")
