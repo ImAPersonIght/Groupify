@@ -5,9 +5,7 @@ async function showGroup(){
     //get user data
     const userToken = await getUserDataForGroup()
     const userData = await getUserByIdForGroup(userToken.user)
-    console.log(userData)
     let roomIds = userData.rooms
-    console.log(roomIds)
 
     for(let i = 1; i < roomIds.length; i ++){
         //for each 
