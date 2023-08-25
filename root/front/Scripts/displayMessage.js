@@ -79,6 +79,7 @@ const validateMessage = (message) => {
     const messGex = /^(.){1,300}$/
 
     if(messGex.test(message)){
+        console.log("Testing Testing 123")
         postMessage(message)
     } else {
         console.log("Message lenght is over 300")
