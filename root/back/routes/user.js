@@ -60,9 +60,22 @@ const patch = (req, res)=>{
     }
 }
 
+const addRoom = (req, res)=>{
+    const newRoomData = req.body
+    try{
+        dal.AddRoom(()=>{
+            res.sendStatus(200)
+        }, newRoomData.room, newRoomData.user_token ,table)
+    }
+    catch(err){
+        res.sendStatus(500)
+    }
+}
+
 router.get('/email/:email', getUserByEmail)
 router.get('/token/:account_token', getUserByToken)
 router.post('/', post)
 router.patch('/', patch)
+router.patch('/addRoom', addRoom)
 router.use(express.json())
 module.exports = router
