@@ -101,21 +101,20 @@ const postMessage = async (mess) => {
         posterUsername : userData.username,
         roomID : 1 // Need to find a way to get roomID
     }
-
-    fetch(url, {
+    try{
+        const response = await fetch(url, {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json'
         },
         body: JSON.stringify(messageData)
-    })
-    .then(response => response.status)
-    .then(response => {
-        console.log(response)
-    })
-    .catch(error => {
-        console.error('Error:', error)
-    });
+        })
+        const data = await response.json()
+        return data
+    }
+    catch(err){
+        console.log(err)
+    }
 }
 
 const getUserById = async (accountToken) => {
