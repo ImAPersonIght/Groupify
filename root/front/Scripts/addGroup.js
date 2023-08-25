@@ -24,8 +24,7 @@ async function searchGroup(){
                 const groupbtn = document.createElement("button")
                 groupbtn.setAttribute("id", `group-btn-${currentGroup}`)
                 groupbtn.onclick = async function(){
-                    //add group to user
-                    //NEEDS FUNCTION TO ADD THE ROOM ID TO THE USER LOGGED IN
+                    addUserToGroup(currentGroup)
                 }
         
                 const groupHeader = document.createElement("h3");
@@ -48,4 +47,42 @@ async function searchGroup(){
     }
     
     
+}
+
+const addUserToGroup = async (group) => {
+    let userID = await getUserDataForAddingGroup()
+    fetch('http://localhost:2718/user/addRoom', {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            room: group,
+            user_token: userID.user,
+        }),
+    })
+    .then(response => {
+        if (response.ok) {
+            // Put here whatever happens after you add a group
+        } else {
+            console.log("Something went wrong! :(")
+        }
+    })
+}
+
+const getUserDataForAddingGroup = async ()=>{
+    const token = localStorage.getItem('accessToken')
+    if (!token) {
+        console.error('Access token not found')
+    }
+    else{
+        const userData = await fetch('http://localhost:2718/decode', {
+            method:'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        return userData.json()
+    }
+    return null
 }
