@@ -30,8 +30,10 @@ async function searchGroup(){
                     await addUserToGroup(currentGroup)
                 }
                 groupbtn.style.padding = "20px";
+                groupbtn.style.margin = "5px"
                 groupbtn.style.border = "5px solid #483A5E"
-                groupbtn.style.width = "10px"
+                groupbtn.style.borderRadius = "5%"
+                groupbtn.style.width = "20%"
                 groupbtn.style.display = "inline"
                 groupbtn.textContent = "Join Group";
         
@@ -41,6 +43,7 @@ async function searchGroup(){
 
                 const groupTopic = document.createElement("p")
                 groupTopic.style.marginLeft = "5px"
+                groupTopic.style.display = "inline"
         
                 var header = document.createTextNode(data[i].roomname);
                 var topic = document.createTextNode(data[i].topic);
