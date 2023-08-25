@@ -21,7 +21,7 @@ async function searchGroup(){
                 const addGroupDiv = document.createElement("div");
                 addGroupDiv.setAttribute("id" , `group-add-${currentGroup}`)
                 addGroupDiv.style.border = "5px solid #483A5E"
-                addGroupDiv.style.margin = "10px"
+                addGroupDiv.style.margin = "15px"
                 addGroupDiv.style.borderRadius = "5%"
 
                 const groupbtn = document.createElement("button")
@@ -30,12 +30,22 @@ async function searchGroup(){
                     await addUserToGroup(currentGroup)
                 }
                 groupbtn.style.padding = "20px";
+                groupbtn.style.margin = "5px"
+                groupbtn.style.marginLeft = "40%"
                 groupbtn.style.border = "5px solid #483A5E"
+                groupbtn.style.borderRadius = "5%"
+                groupbtn.style.width = "40%"
+                groupbtn.style.height = "15%"
+                groupbtn.style.display = "inline"
+                groupbtn.textContent = "Join Group";
         
                 const groupHeader = document.createElement("h3");
                 groupHeader.style.marginLeft = "5px"
+                groupHeader.style.display = "inline"
+
                 const groupTopic = document.createElement("p")
                 groupTopic.style.marginLeft = "5px"
+                groupTopic.style.display = "inline"
         
                 var header = document.createTextNode(data[i].roomname);
                 var topic = document.createTextNode(data[i].topic);
