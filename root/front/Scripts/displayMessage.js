@@ -87,7 +87,7 @@ const validateMessage = (message) => {
 
 const postMessage = async (mess) => {
     let userID = await getUserDataForMessage()
-    const userData = await getUserById(userID.user)
+    let userData = await getUserById(userID.user)
     console.log(userData)
     const id = await getMessageID()
     console.log(id)
