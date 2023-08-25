@@ -20,7 +20,7 @@ async function searchGroup(){
         
                 const addGroupDiv = document.createElement("div");
                 addGroupDiv.setAttribute("id" , `group-add-${currentGroup}`)
-                addGroupDiv.style.border = "5x solid #483A5E"
+                addGroupDiv.style.border = "5px solid #483A5E"
                 addGroupDiv.style.margin = "10px"
                 addGroupDiv.style.borderRadius = "5%"
 
@@ -29,7 +29,7 @@ async function searchGroup(){
                 groupbtn.onclick = async function(){
                     await addUserToGroup(currentGroup)
                 }
-                groupbtn.style.padding = "5px";
+                groupbtn.style.padding = "20px";
                 groupbtn.style.border = "5px solid #483A5E"
         
                 const groupHeader = document.createElement("h3");
