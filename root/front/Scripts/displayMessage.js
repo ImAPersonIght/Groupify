@@ -91,7 +91,7 @@ const postMessage = async (mess) => {
     const id = await getMessageID()
     const url = "http://localhost:2718/message"
     let currentRoom = localStorage.getItem("currentRoom")
-    console.log(currentRoom)
+    console.log("This this the current room: " + currentRoom)
     let messageData = {
         message_id : id,
         Time : getTime(),
