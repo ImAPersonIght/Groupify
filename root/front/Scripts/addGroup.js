@@ -31,9 +31,11 @@ async function searchGroup(){
                 }
                 groupbtn.style.padding = "20px";
                 groupbtn.style.margin = "5px"
+                groupbtn.style.marginLeft = "40%"
                 groupbtn.style.border = "5px solid #483A5E"
                 groupbtn.style.borderRadius = "5%"
-                groupbtn.style.width = "20%"
+                groupbtn.style.width = "40%"
+                groupbtn.style.height = "15%"
                 groupbtn.style.display = "inline"
                 groupbtn.textContent = "Join Group";
         
