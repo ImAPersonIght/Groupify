@@ -34,7 +34,26 @@ const getRoomById = (req, res)=>{
     }
 }
 
+const getRoomByName = (req, res)=>{
+    const name = req.params.name
+    try{
+        dal.GetRoomByName((room)=>{
+            if(room){
+                res.json(room)
+            }
+            else{
+                res.sendStatus(404)
+            }
+        }, table, name)
+    }
+    catch(err){
+        console.log(err)
+        res.sendStatus(500)
+    }
+}
+
 router.post('/', post)
+router.get('/name/:name', getRoomByName)
 router.get('/:id', getRoomById)
 router.use(express.json())
 module.exports = router

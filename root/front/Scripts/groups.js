@@ -11,15 +11,15 @@ async function showGroup(){
         var currentRoom = roomIds[i];
 
         //get the rooms info
-        const response = await fetch(`localhost:2718/room/${currentRoom}`)
+        const response = await fetch(`http://localhost:2718/room/${currentRoom}`)
         const data = await response.json()
 
         // create a new div element
         const groupDiv = document.createElement("div");
-        groupDiv.setAttribute(`id", "group-select-${currentRoom}`)
+        groupDiv.setAttribute("id", `group-select-${currentRoom}`)
         groupDiv.onclick = async function(){
             //show the group info
-            //NOT FINSIHED NEEDS TO SHOW INFO ON THE PAGE BASED ON THE CLCIKED GROUP
+            
             const TITLE = document.getElementById("message-title");
             const DESCRIPTION = document.getElementById("description");
             const RULES = document.getElementById("rules")
@@ -27,6 +27,8 @@ async function showGroup(){
             TITLE.innerHTML = data.roomname;
             DESCRIPTION.innerHTML = data.description;
             RULES.innerHTML = data.rules;
+
+            //NOT FINSIHED NEEDS TO SHOW INFO ON THE PAGE BASED ON THE CLCIKED GROUP
         }
 
         const groupTitle = document.createElement("h1");

@@ -1,18 +1,18 @@
-
+let count = 1
 async function enterMessage() {
     const messageInput = document.getElementById("message-input").value
     await validateMessage(messageInput)
 
     var jsonInfo = await getUserDataForMessage();
 
-    var userName = jsonInfo.username
+    var userName = jsonInfo.username;
 
     addElement(userName, messageInput)
 }   
 
 
 function addElement(username, message) {
-    // create a new div element
+    // create a new elements
     const messageHeader = document.createElement("h3");
     const messageInfo = document.createElement("p")
 
@@ -86,45 +86,59 @@ const validateMessage = (message) => {
 }
 
 const postMessage = async (mess) => {
-    const userData = await getUserDataForMessage();
+    let userID = await getUserDataForMessage()
+    console.log("This is the user ID: " + userID.user)
+    let userData = await getUserById(userID.user)
+    console.log(userData)
+    console.log("This is the users data: " + userData.username)
     const id = await getMessageID()
+    console.log(id)
     const url = "http://localhost:2718/message"
     let messageData = {
-        messageID : id,
-        mTime : getTime(),
-        mDate : getDate(),
-        mMessage : mess,
-        accountToken : userData.account_token,
-        posterUsername : userData.username,
-        roomID : 1 // Need to find a way to get roomID
+        message_id : id,
+        Time : getTime(),
+        Date : getDate(),
+        message_data : mess,
+        user_token : userData.account_token,
+        poster_username : userData.username,
+        roomid : 1 // Need to find a way to get roomID
     }
-
-    fetch(url, {
+    try{
+        const response = await fetch(url, {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json'
         },
         body: JSON.stringify(messageData)
-    })
+        })
+        const data = await response.json()
+        return data
+    }
+    catch(err){
+        console.log(err)
+    }
+}
+
+const getUserById = async (accountToken) => {
+    return await fetch(`http://localhost:2718/user/token/${accountToken}`)
     .then(response => response.json())
     .then(data => {
         console.log(data)
+        return data
     })
-    .catch(error => {
-        console.error('Error:', error)
-    });
+    .catch(error => console.error('An error occurred:', error))
 }
 
 const getMessageID = async () => {
-    let id = 1
+    let id = count
     try{
         const response = await fetch(`http://localhost:2718/message/id/${id}`)
         if(response.status === 404){
             return id
         }
         else{
-            id++
-            getMessageId()
+            count++
+            return getMessageID()
         }
     }
     catch(err){

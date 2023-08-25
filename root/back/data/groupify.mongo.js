@@ -71,6 +71,16 @@ const getRoomById = async (callback, table, id)=>{
     })
 }
 
+const getRoomByName = async (callback, table, name)=>{
+    executeQuery(async (client)=>{
+        const database = client.db(table)
+        const collection = database.collection(table + "s")
+        const query = {roomname: name}
+        const room = await collection.find(query).toArray()
+        callback(room)
+    })
+}
+
 const updateUser = (callback, table, userToken, change, changeData)=>{
     executeQuery(async (client)=>{
         const database = client.db(table)
@@ -86,11 +96,28 @@ const updateUser = (callback, table, userToken, change, changeData)=>{
     })
 }
 
+const addRoom = (callback, newRoom, userToken ,table)=>{
+    executeQuery(async (client)=>{
+        const database = client.db(table)
+        const collection = database.collection(table + 's')
+        const query = {account_token:userToken}
+        const update = {
+            $push:{
+                rooms: newRoom
+            }
+        }
+        await collection.findOneAndUpdate(query, update)
+        callback()
+    })
+}
+
 module.exports = {
     GetUserByIdentifier:getUserByIdentifier,
     GetMessageByRoomid:getMessageByRoomid,
     getMessageById:getMessageById,
     GetRoomByRoomid:getRoomById,
+    GetRoomByName: getRoomByName,
+    AddRoom:addRoom,
     Post:postData,
     Update:updateUser
 }
