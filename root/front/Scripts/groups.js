@@ -13,7 +13,7 @@ async function showGroup(){
 
     console.log(roomIds.length)
 
-    for(let i = 0; i < roomIds.length; i ++){
+    for(let i in roomIds){
         //for each 
         var currentRoom = roomIds[i];
 
