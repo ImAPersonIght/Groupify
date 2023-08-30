@@ -41,7 +41,7 @@ const addGroup = async (name, topic, description, rules) => {
         description : description,
         rules : rules,
         creation_date : getDate(),
-        admin : adminIDs.user  
+        admin : 1
     }
 
     fetch(url, {

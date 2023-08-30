@@ -4,7 +4,7 @@ document.getElementById('login-button').addEventListener('click', async function
     const email = document.getElementById('login-email').value
 
     if (email.length === 0) {
-        console.log("empty")
+        console.log("empty")        
     } else {
         try {
             const response = await fetch(`${url}/email/${email}`)

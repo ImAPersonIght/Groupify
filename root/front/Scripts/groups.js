@@ -1,5 +1,9 @@
 const groupContainer = document.getElementById("groups-container")
 
+function isPlainObject(obj) {
+    return Object.prototype.toString.call(obj) === '[object Object]';
+}
+
 async function showGroup(){
 
     //get user data
@@ -7,10 +11,16 @@ async function showGroup(){
     const userData = await getUserByIdForGroup(userToken.user)
     let roomIds = userData.rooms
 
-    for(let i = 1; i < roomIds.length; i ++){
+    console.log(roomIds)
+
+    for(let i = 0; i < roomIds.length; i ++){
         //for each 
         var currentRoom = roomIds[i];
 
+        if(isPlainObject(currentRoom)){
+        }
+        else{
+            
         //get the rooms info
         const response = await fetch(`http://localhost:2718/room/${currentRoom}`)
         const data = await response.json()
@@ -57,6 +67,7 @@ async function showGroup(){
 
         //adds the elemnt to the file
         document.getElementById('groups-container').appendChild(groupDiv);
+        }
     }
 }
 

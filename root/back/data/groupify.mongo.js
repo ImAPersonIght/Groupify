@@ -1,6 +1,6 @@
-const e = require('express')
+const express = require('express')
 const {MongoClient} = require('mongodb')
-const url = "mongodb://localhost:2717"
+const url = "mongodb://localhost:2717"  
 
 //opens a client and executes query on data
 //@param query - Database query instructions
@@ -58,7 +58,7 @@ const getMessageById = async (callback, table, id)=>{
         const query = {message_id: parseInt(id)}
         const message = await collection.findOne(query)
         callback(message)
-    })
+    })  
 }
 
 const getRoomById = async (callback, table, id)=>{
