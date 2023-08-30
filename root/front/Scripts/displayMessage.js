@@ -86,6 +86,19 @@ const validateMessage = (message) => {
     }
 }
 
+const displayAllMessages = async () =>{
+    let response = await fetch(`http://localhost:2718/message${localStorage.getItem('currentRoom')}`, {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json'
+        }
+    })
+    let messages = response.json()
+    for(let i = 0; i < messages.length; i ++){
+
+    }
+}
+
 const postMessage = async (mess) => {
     let userID = await getUserDataForMessage()
     let userData = await getUserById(userID.user)

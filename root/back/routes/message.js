@@ -20,6 +20,7 @@ const getMessageByRoomid = (req, res)=>{
     const roomid = req.params.roomid
     try{
         dal.GetMessageByRoomid((data)=>{
+            console.log(data)
             res.json(data)
         }, table, roomid)
     }

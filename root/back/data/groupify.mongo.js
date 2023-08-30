@@ -46,6 +46,7 @@ const getMessageByRoomid = async (callback, table, id)=>{
         const database = client.db(table)
         const collection = database.collection(table + "s")
         const query = {roomid: parseInt(id)}
+        console.log(query)
         const messages = await collection.find(query).toArray()
         callback(messages)
     })
@@ -57,6 +58,7 @@ const getMessageById = async (callback, table, id)=>{
         const collection = database.collection(table + "s")
         const query = {message_id: parseInt(id)}
         const message = await collection.findOne(query)
+        console.log(message)
         callback(message)
     })  
 }

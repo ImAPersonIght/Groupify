@@ -11,7 +11,7 @@ async function showGroup(){
     const userData = await getUserByIdForGroup(userToken.user)
     let roomIds = userData.rooms
 
-    console.log(roomIds)
+    console.log(roomIds.length)
 
     for(let i = 0; i < roomIds.length; i ++){
         //for each 
@@ -30,20 +30,26 @@ async function showGroup(){
         const groupDiv = document.createElement("div");
         groupDiv.setAttribute("id", `group-select-${currentRoom}`)
         groupDiv.addEventListener("click", async function(event){
+            console.log("clicked")
 
             //show the group info
-            
-            const TITLE = document.getElementById("message-title");
-            const DESCRIPTION = document.getElementById("description");
-            const RULES = document.getElementById("rules")
-
-            TITLE.innerHTML = data.roomname;
-            DESCRIPTION.innerHTML = data.description;
-            RULES.innerHTML = data.rules;
-
-            loadMessages(currentRoom.roomIds)
-
-            //NOT FINSIHED NEEDS TO SHOW INFO ON THE PAGE BASED ON THE CLCIKED GROUP
+            try{
+                console.log(currentRoom)
+                const TITLE = document.getElementById("message-title");
+                const DESCRIPTION = document.getElementById("description");
+                const RULES = document.getElementById("rules")
+    
+                TITLE.innerHTML = data.roomname;
+                DESCRIPTION.innerHTML = data.description;
+                RULES.innerHTML = data.rules;
+    
+                loadMessages(currentRoom)//.roomids
+    
+                //NOT FINSIHED NEEDS TO SHOW INFO ON THE PAGE BASED ON THE CLCIKED GROUP
+            }
+            catch(err){
+                console.log(err)
+            }
         })
 
         const groupTitle = document.createElement("h1");
@@ -76,13 +82,21 @@ async function showUsersInGroup(UserJson){
 }
 
 async function loadMessages(id){
+    console.log('message')
     const response = await fetch(`http://localhost:2718/message/${id}`)
+    if(response.status === 500){
+        console.log("error")
+    }
+    console.log(response)
+    console.log(response.json)
     const data = await response.json()
+    console.log(data)
 
-    for(i=0; i < data.length; i++){
-
+    for(let i=0; i < data.length; i++){
+        
         var currentMessage = data[i];
 
+        console.log(currentMessage)
 
         const messageDiv = document.createElement('div')
 
