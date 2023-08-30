@@ -37,11 +37,11 @@ async function showGroup(){
         })
 
         const groupTitle = document.createElement("h1");
-        groupTitle.style.marginLeft("5px")
-        groupTitle.style.marginBottom("3px")
+        groupTitle.style.marginLeft = "5px"
+        groupTitle.style.marginBottom = "3px"
 
         const groupTopic = document.createElement("p");
-        groupTopic.style.marginLeft("5px")
+        groupTopic.style.marginLeft = "5px"
 
         //the users message and info
         var title = document.createTextNode(data.roomname);
