@@ -19,7 +19,8 @@ async function showGroup(){
         // create a new div element
         const groupDiv = document.createElement("div");
         groupDiv.setAttribute("id", `group-select-${currentRoom}`)
-        groupDiv.onclick = async function(){
+        groupDiv.addEventListener("click", async function(event){
+
             //show the group info
             
             const TITLE = document.getElementById("message-title");
@@ -33,10 +34,14 @@ async function showGroup(){
             loadMessages(currentRoom.roomIds)
 
             //NOT FINSIHED NEEDS TO SHOW INFO ON THE PAGE BASED ON THE CLCIKED GROUP
-        }
+        })
 
         const groupTitle = document.createElement("h1");
+        groupTitle.style.marginLeft("5px")
+        groupTitle.style.marginBottom("3px")
+
         const groupTopic = document.createElement("p");
+        groupTopic.style.marginLeft("5px")
 
         //the users message and info
         var title = document.createTextNode(data.roomname);
