@@ -14,7 +14,7 @@ async function searchGroup(){
         const response = await fetch(`http://localhost:2718/room/name/${searchInput}`)
         const data = await response.json()
         
-            for(i = 0; i < data.length; i++){
+            for(let i in data){
                 console.log("im in the loop")
                 var currentGroup = data[i];
         
