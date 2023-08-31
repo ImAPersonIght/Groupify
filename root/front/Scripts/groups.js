@@ -103,7 +103,7 @@ async function loadMessages(id){
         messageDiv.appendChild(userName);
         messageDiv.appendChild(message);
         
-        document.getElementById('messages-container').appendChild(messageDiv);
+        document.getElementById('loaded-messages').appendChild(messageDiv);
     }
     
 }
