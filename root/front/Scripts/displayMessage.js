@@ -102,12 +102,10 @@ const displayAllMessages = async () =>{
 const postMessage = async (mess) => {
     let userID = await getUserDataForMessage()
     let userData = await getUserById(userID.user)
-    const id = await getMessageID()
     const url = "http://localhost:2718/message"
     let currentRoom = localStorage.getItem("currentRoom")
     console.log("This this the current room: " + currentRoom)
     let messageData = {
-        message_id : id,
         Time : getTime(),
         Date : getDate(),
         message_data : mess,
@@ -139,23 +137,4 @@ const getUserById = async (accountToken) => {
         return data
     })
     .catch(error => console.error('An error occurred:', error))
-}
-
-const getMessageID = async (retryCount = 0) => {
-    if (retryCount >= getMaxRetryCount) {
-        throw new Error(`Maximum retry count (${getMaxRetryCount}) exceeded`);
-    }
-
-    let id = count
-    try {
-        const response = await fetch(`http://localhost:2718/message/id/${id}`)
-        if (response.status === 404) {
-            return id
-        } else {
-            count++
-            return getMessageID(retryCount + 1)
-        }
-    } catch (err) {
-        console.log(err)
-    }
 }
