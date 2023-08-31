@@ -33,8 +33,6 @@ function addElement(username, message) {
     theMessage.appendChild(messageHeader);
     theMessage.appendChild(messageInfo);
 
-    //document.body.insertBefore(messageHeader, theMessage)
-    //document.body.insertBefore(messageInfo, theMessage);
 }
 
 
