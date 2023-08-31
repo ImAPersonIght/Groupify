@@ -11,9 +11,8 @@ async function showGroup(){
     const userData = await getUserByIdForGroup(userToken.user)
     let roomIds = userData.rooms
 
-    console.log(roomIds.length)
-
     for(let i in roomIds){
+
         //for each 
         var currentRoom = roomIds[i];
 
@@ -24,17 +23,13 @@ async function showGroup(){
         //get the rooms info
         const response = await fetch(`http://localhost:2718/room/${currentRoom}`)
         const data = await response.json()
-        console.log(data)
 
         // create a new div element
         const groupDiv = document.createElement("div");
         groupDiv.setAttribute("id", `group-select-${currentRoom}`)
         groupDiv.addEventListener("click", async function(event){
-            console.log("clicked")
-
             //show the group info
             try{
-                console.log(currentRoom)
                 const TITLE = document.getElementById("message-title");
                 const DESCRIPTION = document.getElementById("description");
                 const RULES = document.getElementById("rules")
@@ -43,7 +38,7 @@ async function showGroup(){
                 DESCRIPTION.innerHTML = data.description;
                 RULES.innerHTML = data.rules;
     
-                loadMessages(currentRoom)//.roomids
+                loadMessages(data.roomid)//.roomids
     
                 //NOT FINSIHED NEEDS TO SHOW INFO ON THE PAGE BASED ON THE CLCIKED GROUP
             }
@@ -87,8 +82,6 @@ async function loadMessages(id){
     if(response.status === 500){
         console.log("error")
     }
-    console.log(response)
-    console.log(response.json)
     const data = await response.json()
     console.log(data)
 
@@ -96,14 +89,12 @@ async function loadMessages(id){
         
         var currentMessage = data[i];
 
-        console.log(currentMessage)
-
         const messageDiv = document.createElement('div')
 
         const userName = document.createElement("h1")
         const message = document.createElement("p")
 
-        var userData = document.createTextNode(currentMessage.poster_unsername)
+        var userData = document.createTextNode(currentMessage.poster_username)
         var messageData = document.createTextNode(currentMessage.message_data)
 
         userName.appendChild(userData);
@@ -112,7 +103,7 @@ async function loadMessages(id){
         messageDiv.appendChild(userName);
         messageDiv.appendChild(message);
         
-        document.getElementById('show-users-in-group').appendChild(messageDiv);
+        document.getElementById('messages-container').appendChild(messageDiv);
     }
     
 }

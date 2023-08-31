@@ -1,4 +1,6 @@
 let count = 1
+const getMaxRetryCount = 10
+
 async function enterMessage() {
     const messageInput = document.getElementById("message-input").value
     await validateMessage(messageInput)
@@ -6,6 +8,8 @@ async function enterMessage() {
     var jsonInfo = await getUserDataForMessage();
 
     var userName = await getUserById(jsonInfo.user)
+
+    console.log(userName)
 
     addElement(userName.username, messageInput)
 }   
@@ -79,7 +83,6 @@ const validateMessage = (message) => {
     const messGex = /^(.){1,300}$/
 
     if(messGex.test(message)){
-        console.log("Testing Testing 123")
         postMessage(message)
     } else {
         console.log("Message lenght is over 300")
@@ -95,7 +98,6 @@ const displayAllMessages = async () =>{
     })
     let messages = response.json()
     for(let i = 0; i < messages.length; i ++){
-
     }
 }
 
@@ -141,19 +143,21 @@ const getUserById = async (accountToken) => {
     .catch(error => console.error('An error occurred:', error))
 }
 
-const getMessageID = async () => {
-    let id = count
-    try{
-        const response = await fetch(`http://localhost:2718/message/id/${id}`)
-        if(response.status === 404){
-            return id
-        }
-        else{
-            count++
-            return getMessageID()
-        }
+const getMessageID = async (retryCount = 0) => {
+    if (retryCount >= getMaxRetryCount) {
+        throw new Error(`Maximum retry count (${getMaxRetryCount}) exceeded`);
     }
-    catch(err){
+
+    let id = count
+    try {
+        const response = await fetch(`http://localhost:2718/message/id/${id}`)
+        if (response.status === 404) {
+            return id
+        } else {
+            count++
+            return getMessageID(retryCount + 1)
+        }
+    } catch (err) {
         console.log(err)
     }
 }
