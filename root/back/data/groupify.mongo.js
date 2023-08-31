@@ -103,9 +103,10 @@ const addRoom = (callback, newRoom, userToken ,table)=>{
         const query = {account_token:userToken}
         const update = {
             $push:{
-                rooms: newRoom
+                rooms: newRoom.roomid
             }
         }
+        console.log(update)
         await collection.findOneAndUpdate(query, update)
         callback()
     })
