@@ -140,22 +140,3 @@ const getUserById = async (accountToken) => {
     })
     .catch(error => console.error('An error occurred:', error))
 }
-
-const getMessageID = async (retryCount = 0) => {
-    // if (retryCount >= getMaxRetryCount) {
-    //     throw new Error(`Maximum retry count (${getMaxRetryCount}) exceeded`);
-    // }
-
-    let id = retryCount
-    try {
-        const response = await fetch(`http://localhost:2718/message/id/${id}`)
-        if (response.status === 404) {
-            return id
-        } else {
-            count++
-            return getMessageID(retryCount + 1)
-        }
-    } catch (err) {
-        console.log(err)
-    }
-}
