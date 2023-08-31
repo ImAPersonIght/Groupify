@@ -37,6 +37,9 @@ async function showGroup(){
                 TITLE.innerHTML = data.roomname;
                 DESCRIPTION.innerHTML = data.description;
                 RULES.innerHTML = data.rules;
+
+                let div = document.getElementById("loaded-messages");
+                div.replaceChildren();
     
                 loadMessages(data.roomid)//.roomids
     
