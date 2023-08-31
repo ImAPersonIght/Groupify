@@ -5,7 +5,6 @@ const table = 'user'
 
 const getUserByToken = (req, res) => {
     const token = req.params.account_token
-    console.log(token)
     try {
         dal.GetUserByIdentifier((jsonData) => {
             if (jsonData) {

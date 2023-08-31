@@ -1,6 +1,5 @@
 var i = 1
 document.getElementById('modal-create-group-btn').addEventListener('click', function(event) {
-    console.log("This button has been clicked")
     event.preventDefault()
 
     let name = document.getElementById('group-name').value

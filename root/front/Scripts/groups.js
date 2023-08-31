@@ -40,6 +40,8 @@ async function showGroup(){
 
                 let div = document.getElementById("loaded-messages");
                 div.replaceChildren();
+
+                localStorage.setItem("currentRoom", data.roomid)
     
                 loadMessages(data.roomid)//.roomids
     
@@ -86,25 +88,25 @@ async function loadMessages(id){
         console.log("error")
     }
     const data = await response.json()
-    console.log(data)
 
     for(let i=0; i < data.length; i++){
         
         var currentMessage = data[i];
+        console.log(currentMessage)
 
         const messageDiv = document.createElement('div')
 
-        const userName = document.createElement("h1")
-        const message = document.createElement("p")
+        const userName = document.createElement("p")
+        // const message = document.createElement("p")
 
-        var userData = document.createTextNode(currentMessage.poster_username)
-        var messageData = document.createTextNode(currentMessage.message_data)
+        var userData = document.createTextNode(currentMessage.poster_username + ": " + currentMessage.message_data)
+        // var messageData = document.createTextNode(currentMessage.message_data)
 
         userName.appendChild(userData);
-        message.append(messageData);
+        // message.append(messageData);
 
         messageDiv.appendChild(userName);
-        messageDiv.appendChild(message);
+        // messageDiv.appendChild(message);
         
         document.getElementById('loaded-messages').appendChild(messageDiv);
     }

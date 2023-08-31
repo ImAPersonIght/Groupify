@@ -9,29 +9,27 @@ async function enterMessage() {
 
     var userName = await getUserById(jsonInfo.user)
 
-    console.log(userName)
-
     addElement(userName.username, messageInput)
 }   
 
 
 function addElement(username, message) {
     // create a new elements
-    const messageHeader = document.createElement("h3");
-    const messageInfo = document.createElement("p")
+    const messageHeader = document.createElement("p");
+    // const messageInfo = document.createElement("p")
 
     //the users message and info
-    var header = document.createTextNode(username);
-    var content = document.createTextNode(message);
+    var header = document.createTextNode(username + ": " + message);
+    // var content = document.createTextNode(message);
 
     //add the text to the tags
     messageHeader.appendChild(header);
-    messageInfo.appendChild(content);
+    // messageInfo.appendChild(content);
 
     // add the newly created element and its content into the DOM
     const theMessage = document.getElementById("the-message");
     theMessage.appendChild(messageHeader);
-    theMessage.appendChild(messageInfo);
+    // theMessage.appendChild(messageInfo);
 
 }
 
@@ -104,14 +102,13 @@ const postMessage = async (mess) => {
     let userData = await getUserById(userID.user)
     const url = "http://localhost:2718/message"
     let currentRoom = localStorage.getItem("currentRoom")
-    console.log("This this the current room: " + currentRoom)
     let messageData = {
         Time : getTime(),
         Date : getDate(),
         message_data : mess,
         user_token : userData.account_token,
         poster_username : userData.username,
-        roomid : currentRoom // Need to find a way to get roomID
+        roomid : parseInt(currentRoom)
     }
     try{
         const response = await fetch(url, {

@@ -15,7 +15,6 @@ async function searchGroup(){
         const data = await response.json()
         
             for(let i in data){
-                console.log("im in the loop")
                 var currentGroup = data[i];
         
                 const addGroupDiv = document.createElement("div");
