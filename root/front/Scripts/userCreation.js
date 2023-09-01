@@ -56,8 +56,9 @@ const validateUserData = (fName, lName, user, pass, email) => {
 
 }
 
-const addUser = (fName, lName, user, pass, email)=>{
-    const id = getUserId()
+const addUser = async (fName, lName, user, pass, email)=>{
+    const id = await getUserId()
+    console.log(id)
     let data = {
         "f_name" : fName,
         "l_name" : lName,
@@ -68,7 +69,7 @@ const addUser = (fName, lName, user, pass, email)=>{
         "friends": [],
         "rooms": [],
     }
-
+    console.log(data)
     fetch(url, {
     method: 'POST',
     headers: {
@@ -82,19 +83,19 @@ const addUser = (fName, lName, user, pass, email)=>{
     .catch(error => console.error('Error:', error))
 }
 
-async function getUserId(){
-    const id = i
-    try{
-        const response = await fetch(`http://localhost:2718/token/${id}`)
-        if(response.status === 404){
-            return i
-        }
-        else{
-            i++
-            getUserId()
-        }
-    }
-    catch(err){
+async function getUserId() {
+    let id = 1
+    try {
+        while (true) {
+            const response = await fetch(`http://localhost:2718/user/token/${id}`)
+            if (response.status === 404) {
+                console.log(id)
+                return id
+            } else {
+                id++
+            }
+        }   
+    } catch (err) {
         console.log(err)
     }
 }

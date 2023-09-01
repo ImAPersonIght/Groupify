@@ -106,7 +106,6 @@ const addRoom = (callback, newRoom, userToken ,table)=>{
                 rooms: newRoom.roomid
             }
         }
-        console.log(update)
         await collection.findOneAndUpdate(query, update)
         callback()
     })
