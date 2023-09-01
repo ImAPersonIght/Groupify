@@ -2,6 +2,7 @@ const accountToken = 1
 url = "http://localhost:2718/user/token/"
 
 document.getElementById('modal-save-UserName-changes').addEventListener('click', function(event) {
+    console.log("this is clicked")
     let oldUsername = document.getElementById('currentUserName').value 
     let newUsername = document.getElementById('newUserName').value 
 
